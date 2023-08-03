@@ -1,0 +1,41 @@
+---
+meta:
+  title: Web920
+  description: Web920
+  url: https://web920.com/
+  author: Craig Erskine
+  author_url: https://craigerskine.com
+
+social:
+  # - title: X
+  #   url: https://x.com/USER
+  #   ico: ri:twitter-x-fill
+  #   color: neutral
+  # - title: Youtube
+  #   url: https://youtube.com/USER
+  #   ico: mdi:youtube
+  #   color: red
+  # - title: Instagram
+  #   url: https://instagram.com/USER
+  #   ico: mdi:instagram
+  #   color: orange
+  - title: GitHub
+    url: https://github.com/craigerskine/web920.com/
+    ico: mdi:github
+    color: neutral
+
+footer:
+  # - title: Sitemap
+  - title: Tech Stack
+    nav:
+      - title: '11ty'
+        sub: SSG
+        url: https://11ty.dev/
+      - title: 'Twind'
+        sub: Styles
+        url: https://twind.style/
+
+analytics: |-
+  // google analytics
+  // window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+  // ga('create', 'UA-XXXXXXX-X', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
