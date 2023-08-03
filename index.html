@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" class="bg-transparent antialiased">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Web 920</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script>
+      // color mode init
+      if (localStorage.getItem('color-mode') === 'dark' || (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('color-mode'))) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+  </head>
+
+  <body class="bg-gray-50 text-gray-700 font-mono !block" style="display: none;">
+    <div id="app" class="min-h-screen flex-(& col)">
+      <header class="w-full flex-none">
+        <button class="color-mode text-xl flex items-center fixed top-2 right-2 motion-safe:(transition) hover:(text-brand-500)" aria-label="Toggle color mode">
+          <span class="block dark:(hidden)"><iconify-icon icon="mdi:weather-sunny" inline="false" class="iconify"></iconify-icon> <span class="sr-only">Switch to dark mode</span></span>
+          <span class="hidden dark:(block)"><iconify-icon icon="mdi:weather-night" inline="false" class="iconify"></iconify-icon> <span class="sr-only">Switch to light mode</span></span>
+        </button>
+      </header>
+      <main class="w-full flex-(& col 1)">
+        <section class="m-auto p-2 w-full max-w-md space-y-10">
+          <fieldset class="flex gap-2">
+            <button type="button" :class="['py-3 px-6 bg-rose-500 rounded', {'ring ring-rose-900/80': brand === 'rose' }]" @click.prevent="brand = 'rose'"><span class="sr-only">Change color to rose</span></button>
+            <button type="button" :class="['py-3 px-6 bg-emerald-500 rounded', {'ring ring-emerald-900/80': brand === 'emerald' }]" @click.prevent="brand = 'emerald'"><span class="sr-only">Change color to emerald</span></button>
+          </fieldset>
+          <h1 class="mx-auto text-(4xl slate-300) leading-none tracking-tight font-semibold select-none md:(text-8xl leading-none tracking-tighter)" @click="logo = !logo">
+            <span class="mx-auto flex items-end" v-show="!logo">
+              <span class="text-slate-700 font-black">web</span>
+              <small class="">(<span :class="'text-'+ brand +'-500 font-black'">920</span>)</small>
+            </span>
+            <span class="mx-auto flex items-end" v-show="logo">
+              <span>#</span>
+              <span class="ml-1 text-slate-700 font-black md:(ml-2 -mr-2)">web</span>
+              <span>.</span>
+              <small :class="'text-'+ brand +'-500 font-black md:(-ml-2)'">920</small>
+            </span>
+          </h1>
+          <small class="text-base tracking-normal font-normal not-italic block">coming soon...</small>
+        </section>
+      </main>
+      <footer class="w-full flex-none"></footer>
+    </div>
+    <script type="module">
+      // icons
+      import 'https://esm.run/iconify-icon';
+
+      // vue
+      import { createApp } from 'https://esm.run/vue@3/dist/vue.esm-browser.js';
+      const app = createApp({
+        data() {
+          return {
+            logo: true,
+            brand: 'rose',
+          }
+        }
+      })
+      app.mount('#app');
+
+      // color mode
+      const toggleColorMode = function() {
+        // light
+        if (document.documentElement.classList.contains('dark')) {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('color-mode', 'light')
+          return;
+        }
+        // dark
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-mode', 'dark');
+      };
+      document.querySelectorAll('.color-mode').forEach(btn => {
+        btn.addEventListener('click', toggleColorMode);
+      });
+
+      // twind
+      import { install, injectGlobal, autoDarkColor } from 'https://esm.run/@twind/core';
+      import presetAutoprefix from 'https://esm.run/@twind/preset-autoprefix';
+      import presetTailwind from 'https://esm.run/@twind/preset-tailwind';
+      install({
+        presets: [presetAutoprefix(), presetTailwind()],
+        darkMode: 'class',
+        darkColor: autoDarkColor,
+        hash: false,
+        theme: {
+          extend: {
+            colors: ({ theme }) => ({
+              brand: theme('colors.indigo'),
+            }),
+            fontFamily: ({ theme }) => ({
+              mono: 'JetBrains Mono,'+ theme('fontFamily.mono'),
+            }),
+          },
+        },
+        rules: [
+        ],
+      });
+      injectGlobal`
+        @layer base {
+        }
+      `
+    </script>
+  </body>
+
+</html>
