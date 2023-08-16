@@ -37,8 +37,56 @@
           <span class="hidden dark:(block)"><iconify-icon icon="mdi:brightness-4" inline="false" class="iconify"></iconify-icon> <span class="sr-only">Switch to light mode</span></span>
         </button>
       </header>
-      <main class="w-full flex-(& col 1)">
-        <section class="m-auto p-2 w-full max-w-md space-y-10">
+      <main class="w-full flex-(& col 1)"> 
+        <div class="w-2/5 text-black flex items-center fixed right-10 inset-y-0 opacity-25 dark:(text-gray-300)" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 828 1021" role="img" class="fill-current">
+            <linearGradient id="a">
+              <stop offset="0" stop-color="currentColor" />
+              <stop offset="1" stop-color="currentColor" stop-opacity="0" />
+            </linearGradient>
+            <linearGradient id="b" gradientUnits="userSpaceOnUse" x1="548.194" x2="237.343" xlink:href="#a" y1="45.0267" y2="583.58" />
+            <linearGradient id="c" gradientUnits="userSpaceOnUse" x1="584.585" x2="273.734" xlink:href="#a" y1="17.7343" y2="556.287" />
+            <linearGradient id="d" gradientUnits="userSpaceOnUse" x1="490.226" x2="250.263" y1="162.462" y2="595.442">
+              <stop offset="0" stop-color="currentColor" stop-opacity="0" />
+              <stop offset="1" stop-color="currentColor" />
+            </linearGradient>
+            <linearGradient id="e" gradientUnits="userSpaceOnUse" x1="467.652" x2="333.389" xlink:href="#a" y1="684.819" y2="917.432" />
+            <linearGradient id="f" gradientUnits="userSpaceOnUse" x1="649.61" x2="684.61" xlink:href="#a" y1="362.769" y2="646.635" />
+            <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="240.766" x2="100.984" xlink:href="#a" y1="102.4" y2="211.845" />
+            <linearGradient id="h" gradientUnits="userSpaceOnUse" x1="201.169" x2="164.703" xlink:href="#a" y1="273.327" y2="336.504" />
+            <linearGradient id="i" gradientUnits="userSpaceOnUse" x1="681.431" x2="644.965" xlink:href="#a" y1="337.004" y2="400.181" />
+            <path d="m444.8 504.6c17.2 21.5 36.3 45.1 49.7 61.6 14.9-44.8-5-107.4-27.2-154.2-5.3 29.1-12.7 59.9-22.5 92.6z" class="text-emerald-500" />
+            <path d="m340 338.8c-22.1 21.2-41.9 60.8-27 122.7 13.4-1.1 32.4-2.6 49.6-4.2-9.8-44-17.2-83.3-22.6-118.5z" class="text-rose-500" />
+            <path d="m387.6 559.3c-123.6-474.6-21.9-514.9 16.5-531.1 38.4 60.6 140 218.2 16.3 550z" fill="url(#b)" opacity=".2" />
+            <path d="m424 532c-123.6-474.5-22-514.9 16.5-531.100006 38.4 60.600006 140 218.200006 16.3 550.000006z" fill="url(#c)" opacity=".1" />
+            <path d="m420.4 578.2c123.7-331.8 22.1-489.4-16.3-550v540.6z" fill="url(#d)" opacity=".15" />
+            <path d="m440.9 195.3c0 28.9-17 42.5-38 30.4s-38-45.4-38-74.3 17-42.5 38-30.4 38 45.4 38 74.3z" opacity=".1" />
+            <path d="m433.4 685.6c-8.7-14.2-12.9-32.2-16.6-48-4.3-18.2-7.9-33.7-16.9-37.6-10.3-4.5-14.9 6.9-21.4 22.7-3.8 9.3-8.3 20.3-14.9 30.4-7.1-7.5-14.6-13.7-22.5-18.2-33.1-19.1-60.7-2.6-67.2 36.8-4.5-3.4-9-6.5-13.6-9.2-53.1-30.6-96.1 4.1-96.1 77.7 0 73.5 43 157.9 96 188.5 51.5 29.7 93.6-2.2 96-71.3 9.7 18 22.6 33.1 36.9 41.3 3.7 2.1 7.3 3.7 10.7 4.7 20.6 45.3 51.3 84.3 85.6 104.1 62 35.8 112.3-4.6 112.4-90.2 0-85.6-50.3-184.1-112.3-219.9-20.5-11.8-39.6-15.4-56.1-11.8z" fill="url(#e)" opacity=".1" />
+            <path d="m533.3 358.2 270.7 156.3.1 141.1-246.8-142.5-23.9 7.8z" fill="url(#f)" opacity=".3" />
+            <path d="m725.3 539.3v-38.3l102.2 59v38.3z" class="text-emerald-500" />
+            <g>
+              <path d="m602.9 432.7 59.3 34.2v12.4l-59.3-34.2z" opacity=".1" />
+              <path d="m603 457.5 107 61.8v12.4l-107-61.8z" opacity=".1" />
+              <path d="m603 482.3 138.5 80v12.4l-138.5-80z" opacity=".15" />
+            </g>
+            <path d="m588.3 437.2c0 11.6-6.9 17.1-15.4 12.2s-15.4-18.3-15.4-29.9 6.9-17.1 15.4-12.2c8.6 4.9 15.4 18.3 15.4 29.9z" class="text-emerald-500" />
+            <path d="m299.8 158.9-270.7004-156.2.1 141.1 246.8004 142.4 23.9 35.4z" fill="url(#g)" opacity=".3" />
+            <path d="m.200195 57.7v-38.3l102.199805 59v38.3z" class="text-rose-500" />
+            <path d="m230.2 153.1-59.3-34.2v12.4l59.3 34.2z" opacity=".15" />
+            <path d="m230.2 177.9-114.3-66v12.4l114.3 66z" opacity=".15" />
+            <path d="m230.2 202.7-138.4998-80v12.4l138.4998 80z" opacity=".15" />
+            <path d="m244.8 174.4c0 11.6 6.9 25 15.4 29.9s15.4-.6 15.4-12.2-6.9-25-15.4-29.9c-8.5-4.8-15.4.6-15.4 12.2z" class="text-rose-500" />
+            <path d="m263.8 309.5-161.7-93.3v84.2l161.7 93.3z" fill="url(#h)" opacity=".2" />
+            <path d="m143.5 260.3 55.4 32v10.1l-55.4-32z" opacity=".15" />
+            <path d="m143.5 280.6 103.6 59.8v10.2l-103.6-59.8z" opacity=".15" />
+            <path d="m135 263.3c0 6.9-4.1 10.2-9.2 7.3s-9.2-10.9-9.2-17.9c0-6.9 4.1-10.2 9.2-7.3 5 3 9.2 11 9.2 17.9z" class="text-rose-500" />
+            <path d="m744 373.1-161.7-93.3v84.2l161.7 93.4z" fill="url(#i)" opacity=".2" />
+            <path d="m623.7 324 55.4 32v10.1l-55.4-32z" opacity=".15" />
+            <path d="m623.8 344.3 103.6 59.8v10.2l-103.6-59.8z" opacity=".15" />
+            <path d="m615.2 327c0 6.9-4.1 10.2-9.2 7.3s-9.2-10.9-9.2-17.9c0-6.9 4.1-10.2 9.2-7.3 5.1 3 9.2 11 9.2 17.9z" class="text-emerald-500" />
+          </svg>
+        </div>
+        <section class="m-auto p-2 w-full max-w-md space-y-10 relative">
           <fieldset class="flex gap-2">
             <button type="button" :class="['py-3 px-6 bg-rose-500 rounded', {'ring ring-rose-900/80': brand === 'rose' }]" @click.prevent="brand = 'rose'"><span class="sr-only">Change color to rose</span></button>
             <button type="button" :class="['py-3 px-6 bg-emerald-500 rounded', {'ring ring-emerald-900/80': brand === 'emerald' }]" @click.prevent="brand = 'emerald'"><span class="sr-only">Change color to emerald</span></button>
@@ -51,7 +99,7 @@
             <span class="mx-auto flex items-end" v-show="logo">
               <span>#</span>
               <span class="ml-1 text-slate-700 font-black md:(ml-2 -mr-2)">web</span>
-              <span>.</span>
+              <span class="-mx-1">.</span>
               <small :class="'text-'+ brand +'-500 font-black md:(-ml-2)'">920</small>
             </span>
           </h1>
