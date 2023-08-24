@@ -89,8 +89,8 @@
         </div>
         <section class="m-auto p-2 w-full max-w-md space-y-10 relative">
           <fieldset class="flex -space-x-2">
-            <button type="button" :class="['w-8 h-8 bg-rose-500 border-2 ring-(& gray-50/100) rounded-full', brand === 'rose' ? 'border-black dark:border-white' : 'border-gray-50']" @click.prevent="brand = 'rose'"><span class="sr-only">Change color to rose</span></button>
-            <button type="button" :class="['w-8 h-8 bg-emerald-500 border-2 ring-(& gray-50/100) rounded-full', brand === 'emerald' ? 'border-black dark:border-white' : 'border-gray-50']" @click.prevent="brand = 'emerald'"><span class="sr-only">Change color to emerald</span></button>
+            <button type="button" :class="['w-8 h-8 bg-rose-500 border-2 relative ring-(& gray-50/100) rounded-full', brand === 'rose' ? 'border-black dark:border-white z-20' : 'border-gray-50 z-10']" @click.prevent="brand = 'rose'"><span class="sr-only">Change color to rose</span></button>
+            <button type="button" :class="['w-8 h-8 bg-emerald-500 border-2 relative ring-(& gray-50/100) rounded-full', brand === 'emerald' ? 'border-black dark:border-white z-20' : 'border-gray-50 z-10']" @click.prevent="brand = 'emerald'"><span class="sr-only">Change color to emerald</span></button>
           </fieldset>
           <h1 class="mx-auto text-(4xl slate-300) leading-none tracking-tight font-semibold select-none md:(text-8xl leading-none tracking-tighter)" @click="logo = !logo">
             <span class="mx-auto flex items-end" v-show="!logo">

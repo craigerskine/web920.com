@@ -1,5 +1,35 @@
 ---
 layout: 'layouts/default.njk'
-permalink: false
+permalink: _index.html
 ---
 
+<div class="prose mx-auto max-w-4xl">
+  {% renderTemplate "md" %}
+  - /
+  - Events
+  - Blog?
+  - 920ers
+  {.pl-0 .list-none .flex .gap-4}
+
+  ***
+  
+  # We aim to educate, share information, and network among current and aspiring web development/design professionals.
+  
+  ## Join your fellow web developers and designers for:
+  
+  - Presentations on topics of interest
+  - Q&A about web development
+  - Q&A about web design
+  - Networking
+  
+  ### We'll look at various aspects of web development and design, including:
+  
+  - Sketch/Figma
+  - HTML/Js component/templating frameworks
+  - CSS and better alternatives
+  - Workflow
+  - Content Management
+  
+  ...and much more.
+  {% endrenderTemplate %}
+</div>
