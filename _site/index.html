@@ -61,13 +61,13 @@
                 <path d="m433.4 685.6c-8.7-14.2-12.9-32.2-16.6-48-4.3-18.2-7.9-33.7-16.9-37.6-10.3-4.5-14.9 6.9-21.4 22.7-3.8 9.3-8.3 20.3-14.9 30.4-7.1-7.5-14.6-13.7-22.5-18.2-33.1-19.1-60.7-2.6-67.2 36.8-4.5-3.4-9-6.5-13.6-9.2-53.1-30.6-96.1 4.1-96.1 77.7 0 73.5 43 157.9 96 188.5 51.5 29.7 93.6-2.2 96-71.3 9.7 18 22.6 33.1 36.9 41.3 3.7 2.1 7.3 3.7 10.7 4.7 20.6 45.3 51.3 84.3 85.6 104.1 62 35.8 112.3-4.6 112.4-90.2 0-85.6-50.3-184.1-112.3-219.9-20.5-11.8-39.6-15.4-56.1-11.8z" />
               </g>
             </g>
-            <g class="text-rose-500" >
+            <g :class="'text-'+ brand +'-500 motion-safe:transition'" >
               <path d="m340 338.8c-22.1 21.2-41.9 60.8-27 122.7 13.4-1.1 32.4-2.6 49.6-4.2-9.8-44-17.2-83.3-22.6-118.5z" />
               <path d="m.200195 57.7v-38.3l102.199805 59v38.3z" />
               <path d="m244.8 174.4c0 11.6 6.9 25 15.4 29.9s15.4-.6 15.4-12.2-6.9-25-15.4-29.9c-8.5-4.8-15.4.6-15.4 12.2z" />
               <path d="m135 263.3c0 6.9-4.1 10.2-9.2 7.3s-9.2-10.9-9.2-17.9c0-6.9 4.1-10.2 9.2-7.3 5 3 9.2 11 9.2 17.9z" />
             </g>
-            <g class="text-emerald-500">
+            <g :class="'text-'+ brand +'-500 motion-safe:transition'">
               <path d="m444.8 504.6c17.2 21.5 36.3 45.1 49.7 61.6 14.9-44.8-5-107.4-27.2-154.2-5.3 29.1-12.7 59.9-22.5 92.6z" />
               <path d="m725.3 539.3v-38.3l102.2 59v38.3z" />
               <path d="m588.3 437.2c0 11.6-6.9 17.1-15.4 12.2s-15.4-18.3-15.4-29.9 6.9-17.1 15.4-12.2c8.6 4.9 15.4 18.3 15.4 29.9z" />
@@ -89,19 +89,19 @@
         </div>
         <section class="m-auto p-2 w-full max-w-md space-y-10 relative">
           <fieldset class="flex -space-x-2">
-            <button type="button" :class="['w-8 h-8 bg-rose-500 border-2 relative ring-(& gray-50/100) rounded-full', brand === 'rose' ? 'border-black dark:border-white z-20' : 'border-gray-50 z-10']" @click.prevent="brand = 'rose'"><span class="sr-only">Change color to rose</span></button>
-            <button type="button" :class="['w-8 h-8 bg-emerald-500 border-2 relative ring-(& gray-50/100) rounded-full', brand === 'emerald' ? 'border-black dark:border-white z-20' : 'border-gray-50 z-10']" @click.prevent="brand = 'emerald'"><span class="sr-only">Change color to emerald</span></button>
+            <button type="button" :class="['w-8 h-8 bg-rose-500 border-2 relative ring-(& gray-50/100) rounded-full motion-safe:transition', brand === 'rose' ? 'border-black dark:border-white z-20' : 'border-gray-50 z-10']" @click.prevent="brand = 'rose'"><span class="sr-only">Change color to rose</span></button>
+            <button type="button" :class="['w-8 h-8 bg-emerald-500 border-2 relative ring-(& gray-50/100) rounded-full motion-safe:transition', brand === 'emerald' ? 'border-black dark:border-white z-20' : 'border-gray-50 z-10']" @click.prevent="brand = 'emerald'"><span class="sr-only">Change color to emerald</span></button>
           </fieldset>
           <h1 class="mx-auto text-(4xl slate-300) leading-none tracking-tight font-semibold select-none md:(text-8xl leading-none tracking-tighter)" @click="logo = !logo">
             <span class="mx-auto flex items-end" v-show="!logo">
               <span class="text-slate-700 font-black">web</span>
-              <small class="">(<span :class="'text-'+ brand +'-500 font-black'">920</span>)</small>
+              <small class="">(<span :class="'text-'+ brand +'-500 font-black motion-safe:transition'">920</span>)</small>
             </span>
             <span class="mx-auto flex items-end" v-show="logo">
               <span>#</span>
               <span class="ml-1 text-slate-700 font-black md:(ml-2 -mr-2)">web</span>
               <span class="-mx-1">.</span>
-              <small :class="'text-'+ brand +'-500 font-black md:(-ml-2)'">920</small>
+              <small :class="'text-'+ brand +'-500 font-black md:(-ml-2) motion-safe:transition'">920</small>
             </span>
           </h1>
           <small class="text-base tracking-normal font-normal not-italic block">coming soon...</small>
