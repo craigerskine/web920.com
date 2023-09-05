@@ -43,7 +43,7 @@
       <header class="w-full flex-none relative">
         <nav class="mx-auto py-6 px-4 max-w-7xl flex items-center justify-between lg:(px-8)" aria-label="Global">
           <div class="lg:(flex-1)">
-            <a href="/_index.html" class="w-32 block motion-safe:(hover:(animate-blob))">
+            <a href="{{ '/_index.html' | url }}" class="w-32 block motion-safe:(hover:(animate-blob))">
               <span class="sr-only">web920</span>
               {% include "logo.njk" %}
             </a>
@@ -117,7 +117,7 @@
         {{ content | safe }}
       </main>
 
-      {%- macro footerLink(title='Title',sub='',url='#') %}
+      {%- macro footer_nav(title='Title',sub='',url='#') %}
       <li class="py-3 leading-tight">
         <a href="{{ url | url }}" class="group motion-safe:(transition) hover:(text-brand-600)">
           {%- if sub %}<small class="pb-1 text-xs block opacity-80">{{ sub }}</small>{%- endif %}
@@ -129,7 +129,7 @@
         <div class="mx-auto px-4 max-w-7xl">
           <div class="pb-8 text-center space-y-5 md:(pb-12 text-start flex items-start justify-between gap-5 space-y-0)">
             <nav class="flex-none">
-              <a href="{{ '/' | url }}" class="group w-32 inline-flex transform motion-safe:(transition hover:(animate-blob))">
+              <a href="{{ '/_index.html' | url }}" class="group w-32 inline-flex transform motion-safe:(transition hover:(animate-blob))">
                 {% include "logo.njk" %}
               </a>
               <ul class="py-5 text-2xl flex justify-center gap-5 md:(justify-start)">
@@ -146,17 +146,17 @@
               {%- for cat in site.footer %}
               <ul>
                 <li>
-                  <strong class="pb-1.5 uppercase block opacity-75">{{ cat.title }}</strong>
+                  <b class="pb-1.5 font-black uppercase block opacity-75">{{ cat.title }}</b>
                   <ul>
                     {# sitemap #}
                     {%- if cat.title == 'Sitemap' %}
                       {%- for item in collections.all | eleventyNavigation %}
-                      {{ footerLink(title=item.key,sub=item.title,url=item.url) }}
+                      {{ footer_nav(title=item.key,sub=item.title,url=item.url) }}
                       {%- endfor %}
                     {# tech stack #}
                     {%- else %}
                       {%- for item in cat.nav %}
-                      {{ footerLink(title=item.title,sub=item.sub,url=item.url) }}
+                      {{ footer_nav(title=item.title,sub=item.sub,url=item.url) }}
                       {%- endfor %}
                     {%- endif %}
                   </ul>
@@ -168,7 +168,7 @@
           <div class="border-(t gray-500/20) py-3 text-(xs pri-500 center) leading-relaxed space-y-3 md:(py-6 text-start flex-(& wrap) justify-between space-y-0)">
             <p>
               &copy;{% year %} {{ site.meta.title }}
-              <span class="block">Season 1: <a href="{{ site.meta.author_url }}" class="text-brand-700 motion-safe:(transition) hover:(text-brand-900)">{{ site.meta.author }}</a></span>
+              <span class="block">Season 1: <a href="{{ site.meta.author_url | url }}" class="text-brand-700 motion-safe:(transition) hover:(text-brand-900)">{{ site.meta.author }}</a></span>
             </p>
             <p class="md:(text-end)">
               Updated on:

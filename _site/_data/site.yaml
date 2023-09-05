@@ -1,43 +1,46 @@
 ---
 meta:
   title: Web920
-  description: Web920
+  description: Green Bay meet up for web developers and designers
   url: https://web920.com/
   author: Craig Erskine
   author_url: https://craigerskine.com
 
 social:
-  # - title: X
-  #   url: https://x.com/USER
-  #   ico: ri:twitter-x-fill
-  #   color: neutral
-  # - title: Youtube
-  #   url: https://youtube.com/USER
-  #   ico: mdi:youtube
-  #   color: red
-  # - title: Instagram
-  #   url: https://instagram.com/USER
-  #   ico: mdi:instagram
-  #   color: orange
+  - title: X
+    url: https://twitter.com/web920
+    ico: ri:twitter-x-fill
+    color: neutral
+  - title: Youtube
+    url: https://youtube.com/USER
+    ico: ri:youtube-fill
+    color: red
+  - title: Instagram
+    url: https://instagram.com/USER
+    ico: ri:instagram-fill
+    color: orange
   - title: Facebook
     url: https://facebook.com/web920/
-    ico: mdi:facebook
+    ico: ri:facebook-fill
     color: indigo
-  - title: GitHub
-    url: https://github.com/craigerskine/web920.com/
-    ico: mdi:github
-    color: neutral
+  # - title: GitHub
+  #   url: https://github.com/craigerskine/web920.com/
+  #   ico: ri:github-fill
+  #   color: neutral
 
 footer:
-  # - title: Sitemap
+  - title: Sitemap
   - title: Tech Stack
     nav:
-      - title: '11ty'
+      - title: 11ty
         sub: SSG
         url: https://11ty.dev/
-      - title: 'Twind'
+      - title: Twind
         sub: Styles
         url: https://twind.style/
+      - title: Code
+        sub: Source
+        url: https://github.com/craigerskine/web920.com/
 
 analytics: |-
   // google analytics
