@@ -17,8 +17,8 @@ const toggleColorMode = function() {
   localStorage.setItem('color-mode', 'dark');
 };
 
-document.querySelectorAll(".color-mode").forEach(btn => {
-  btn.addEventListener("click", toggleColorMode);
+document.querySelectorAll('.color-mode').forEach(btn => {
+  btn.addEventListener('click', toggleColorMode);
 });
 
 // twind
@@ -35,16 +35,27 @@ install({
   theme: {
     extend: {
       colors: ({ theme }) => ({
-        gray: theme('colors.slate'),
         brand: theme('colors.rose'),
         accent: theme('colors.emerald'),
       }),
       fontFamily: ({ theme }) => ({
         mono: 'JetBrains Mono,'+ theme('fontFamily.mono'),
       }),
+      keyframes: {
+        blob: {
+          '15%': { transform: 'scale(1.4, 1.2)', },
+          '40%': { transform: 'scale(.9, .9)', },
+          '75%': { transform: 'scale(1.08, 1)', },
+          '100%': { transform: 'scale(1, 1)', },
+        },
+      },
+      animation: {
+        blob: 'blob .3s ease-in-out',
+      },
     },
   },
   rules: [
+    ['btn-', ({ $$ }) => `py-2.5 px-3.5 bg-${$$}-400 text-${$$}-900 text-sm font-semibold inline-flex items-center gap-1.5 rounded-md motion-safe:(transition) hover:(bg-${$$}-200)`],
   ],
 });
 injectGlobal`
@@ -53,3 +64,8 @@ injectGlobal`
     [x-cloak] { @apply hidden; }
   }
 `
+
+// alpine
+import Alpine from 'alpinejs';
+window.Alpine = Alpine;
+Alpine.start();

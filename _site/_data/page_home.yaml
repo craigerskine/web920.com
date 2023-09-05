@@ -1,0 +1,36 @@
+---
+hero:
+  heading: Learn, educate and network about web tech in Green Bay
+  lead: Meet up with your fellow web developers and designers monthly as we dig into various aspects of cutting edge web development and design practices.
+
+###
+activities:
+  heading: Activities
+  items:
+    - title: Live presentations
+      desc: Doloribus dolores nostrum quia qui natus officia quod et dolorem. Sit repellendus qui ut at.
+      ico: mdi:microphone
+
+    - title: Design/Development Q&A
+      desc: Doloribus dolores nostrum quia qui natus officia quod et dolorem. Sit repellendus qui ut at.
+      ico: mdi:chat-question
+
+    - title: Networking
+      desc: Doloribus dolores nostrum quia qui natus officia quod et dolorem. Sit repellendus qui ut at.
+      ico: mdi:account-network
+
+###
+topics:
+  heading: Topics
+  items:
+    - title: Sketch/Figma
+      desc: Doloribus dolores nostrum quia qui natus officia quod et dolorem. Sit repellendus qui ut at.
+      ico: mdi:drawing-box
+
+    - title: HTML/CSS/Js
+      desc: Doloribus dolores nostrum quia qui natus officia quod et dolorem. Sit repellendus qui ut at.
+      ico: mdi:code-block-tags
+
+    - title: Reactive frameworks
+      desc: Doloribus dolores nostrum quia qui natus officia quod et dolorem. Sit repellendus qui ut at.
+      ico: mdi:code-json

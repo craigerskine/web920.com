@@ -1,7 +1,14 @@
+{% macro mode() %}
+<button class="color-mode text-(gray-500 xl) inline-flex motion-safe:(transition) hover:(text-gray-700)" aria-label="Toggle color mode">
+  <span class="block dark:(hidden)"><iconify-icon icon="mdi:weather-sunny" inline="false" class="iconify"></iconify-icon> <span class="sr-only">Switch to dark mode</span></span>
+  <span class="hidden dark:(block)"><iconify-icon icon="mdi:weather-night" inline="false" class="iconify"></iconify-icon> <span class="sr-only">Switch to light mode</span></span>
+</button>
+{% endmacro %}
+
 {% macro heading(tag='h1',divider=false) %}
 <{{ tag }} class="pb-12 w-full text-2xl leading-tight font-black flex items-center space-x-4 lg:(text-[calc(3vw)])">
   {%- if divider %}<i class="h-px bg-gray-500/20 flex-1 aria-hidden="true""></i>{%- endif %}
-  <span class="{% if divider %}flex-none{% else %}text-center flex-1{% endif %}">
+  <span class="{% if divider %}flex-none{% else %}flex-1{% endif %}">
     {{ caller() }}
   </span>
   {%- if divider %}<i class="h-px bg-gray-500/20 flex-1 aria-hidden="true""></i>{%- endif %}
@@ -9,13 +16,19 @@
 {% endmacro %}
 
 {% macro list() %}
-<ul class="mx-auto max-w-xl grid-(& cols-1) gap-16 lg:(max-w-none grid-cols-3)">
+<ul class="mt-12 mx-auto px-6 w-full max-w-7xl grid-(& cols-1) gap-16 lg:(grid-cols-3)">
   {{ caller() }}
 </ul>
 {% endmacro %}
 
-{% macro listItem() %}
-<li class="flex">
-  {{ caller() }}
+{% macro list_item(title='',desc='',ico='mdi:check') %}
+<li class="flex-(& col)">
+  {%- if ico %}  
+    <i class="mb-10 w-12 h-12 bg-gray-500/5 bg-gradient-to-t from-gray-900/10 text-(gray-600 2xl) flex items-center justify-center rounded-full shadow dark:(bg-gradient-to-b shadow-black/50)">
+      <iconify-icon icon="{{ ico }}" inline class="iconify opacity-50"></iconify-icon>
+    </i>
+  {%- endif %}
+  <b class="text-lg">{{ title }}</b>
+  <p class="mt-5 text-gray-500">{{ desc }}</p>
 </li>
 {% endmacro %}
