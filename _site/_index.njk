@@ -1,5 +1,5 @@
 ---
-layout: 'layouts/default.njk'
+layout: layouts/default.njk
 permalink: _index.html
 ---
 
@@ -12,15 +12,15 @@ permalink: _index.html
         <rect width="150" height="150" fill="none" />
       </pattern>
     </defs>
-    <rect width="100%" height="100%" stroke-width="0" fill="url(#pattern-mast-grid)" />
+    <rect width="100%" height="100%" stroke-width="0" fill="url(#pattern-mast-grid)" class="-rotate-3" />
   </svg>
-  <div class="absolute left-1/2 right-0 inset-y-0 -ml-24 transform-gpu overflow-hidden blur-3xl lg:ml-24 xl:ml-48" aria-hidden="true">
-    <div class="aspect-[801/1036] w-[50.0625rem] bg-gradient-to-tr from-gray-100 to-gray-500 opacity-30" style="clip-path: polygon(63.1% 29.5%, 100% 17.1%, 76.6% 3%, 48.4% 0%, 44.6% 4.7%, 54.5% 25.3%, 59.8% 49%, 55.2% 57.8%, 44.4% 57.2%, 27.8% 47.9%, 35.1% 81.5%, 0% 97.7%, 39.2% 100%, 35.2% 81.4%, 97.2% 52.8%, 63.1% 29.5%)"></div>
+  <div class="-ml-24 absolute left-1/2 right-0 inset-y-0 transform-gpu overflow-hidden blur-3xl lg:(ml-24) xl:(ml-48)" aria-hidden="true">
+    <div class="w-[50.0625rem] aspect-[801/1036] bg-gradient-to-tr from-gray-100 to-gray-500 opacity-30" style="clip-path: polygon(63.1% 29.5%, 100% 17.1%, 76.6% 3%, 48.4% 0%, 44.6% 4.7%, 54.5% 25.3%, 59.8% 49%, 55.2% 57.8%, 44.4% 57.2%, 27.8% 47.9%, 35.1% 81.5%, 0% 97.7%, 39.2% 100%, 35.2% 81.4%, 97.2% 52.8%, 63.1% 29.5%)"></div>
   </div>
   <div class="overflow-hidden relative">
-    <div class="mx-auto max-w-7xl px-6 pb-32 pt-36 sm:pt-60 lg:px-8 lg:pt-32">
-      <div class="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
-        <div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
+    <div class="mx-auto max-w-7xl px-6 pt-36 pb-32 sm:(pt-60) lg:(px-8 pt-32)">
+      <div class="mx-auto max-w-2xl gap-x-14 lg:(mx-0 flex max-w-none items-center)">
+        <div class="w-full max-w-xl lg:(shrink-0 max-w-2xl)">
           <h1 class="text-(gray-900 4xl) font-black tracking-tight sm:(text-6xl)">
             {{ page_home.hero.heading }}
           </h1>
@@ -28,36 +28,27 @@ permalink: _index.html
             {{ page_home.hero.lead }}
           </p>
           <div class="mt-12 flex items-center gap-x-6">
-            <a href="#" class="btn-brand">Coming events</a>
-            <a href="#" class="group text-sm font-semibold leading-6 text-gray-900">920ers <span aria-hidden="true" class="inline-block motion-safe:(transition) group-hover:(translate-x-1)">→</span></a>
+            <a href="{{ '/events/' | url }}" class="btn-brand">Coming events</a>
+            <a href="{{ '/920ers/' | url }}" class="group text-(gray-900 sm) font-semibold leading-6">920ers <span aria-hidden="true" class="inline-block motion-safe:(transition) group-hover:(translate-x-1)">→</span></a>
           </div>
         </div>
-        <div class="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
-          <div class="ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80">
-            <div class="relative">
-              <img src="/_assets/img/hero/craig.jpg" alt="" class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg">
-              <div class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"></div>
-            </div>
+        {%- macro pic(img='01') %}
+        <div class="relative -rotate-3 motion-safe:(transition hover:(animate-blob)) hover:(rotate-0)">
+          <img src="/_assets/img/hero/{{ img }}.jpg" alt="photo {{ img }}" class="w-full aspect-[2/3] bg-gray-900/5 object-cover rounded-xl shadow-lg">
+          <div class="pointer-events-none absolute inset-0 rounded-xl ring-(1 inset gray-900/10)"></div>
+        </div>
+        {%- endmacro %}
+        <div class="mt-14 flex justify-end gap-8 sm:(-mt-44 pl-20 justify-start) lg:(mt-0 pl-0)">
+          <div class="ml-auto pt-32 w-44 flex-none space-y-8 sm:(ml-0 pt-80) lg:(order-last pt-36) xl:(order-none pt-80)">
+            {{ pic(img='01') }}
           </div>
-          <div class="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36">
-            <div class="relative">
-              <img src="/_assets/img/hero/elliot.jpg" alt="" class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg">
-              <div class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"></div>
-            </div>
-            <div class="relative">
-              <img src="/_assets/img/hero/craig.jpg" alt="" class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg">
-              <div class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"></div>
-            </div>
+          <div class="mr-auto w-44 flex-none space-y-8 sm:(mr-0 pt-52) lg:(pt-36)">
+            {{ pic(img='02') }}
+            {{ pic(img='03') }}
           </div>
-          <div class="w-44 flex-none space-y-8 pt-32 sm:pt-0">
-            <div class="relative">
-              <img src="/_assets/img/hero/craig.jpg" alt="" class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg">
-              <div class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"></div>
-            </div>
-            <div class="relative">
-              <img src="/_assets/img/hero/elliot.jpg" alt="" class="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg">
-              <div class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10"></div>
-            </div>
+          <div class="w-44 flex-none space-y-8 pt-32 sm:(pt-0)">
+            {{ pic(img='04') }}
+            {{ pic(img='05') }}
           </div>
         </div>
       </div>
@@ -65,17 +56,29 @@ permalink: _index.html
   </div>
 </section>
 
-<section>
-  <h2 class="mx-auto p-6 w-full max-w-7xl text-4xl font-black">{{ page_home.activities.heading }}</h2>
+<section class="mx-auto p-6 w-full max-w-7xl space-y-12">
+  {%- call el.heading(tag='h2',divider=true) %}
+  {{ page_home.activities.heading }}
+  {%- endcall %}
   {%- call el.list() %}
     {%- for item in page_home.activities.items %}
       {{ el.list_item(title=item.title,desc=item.desc,ico=item.ico) }}
     {%- endfor %}
   {%- endcall %}
-  <h2 class="mt-12 mx-auto p-6 w-full max-w-7xl text-4xl font-black">{{ page_home.topics.heading }}</h2>
+  {%- call el.heading(tag='h2',divider=true) %}
+  {{ page_home.topics.heading }}
+  {%- endcall %}
   {%- call el.list() %}
     {%- for item in page_home.topics.items %}
       {{ el.list_item(title=item.title,desc=item.desc,ico=item.ico) }}
+    {%- endfor %}
+  {%- endcall %}
+  {%- call el.heading(tag='h2',divider=true) %}
+  {{ page_home.sponsors.heading }}
+  {%- endcall %}
+  {%- call el.list() %}
+    {%- for item in page_home.sponsors.items %}
+      {{ el.list_item(title=item.title,logo=item.logo,url=item.url) }}
     {%- endfor %}
   {%- endcall %}
 </section>

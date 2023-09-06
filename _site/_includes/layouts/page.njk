@@ -1,0 +1,14 @@
+---
+layout: 'layouts/default.njk'
+---
+
+{%- import 'components/partials.njk' as el -%}
+
+<section class="mx-auto px-6 max-w-7xl">
+  {%- if page.url !== '/' %}
+    {%- call el.heading(divider=true) %}{{ title }}{%- endcall %}
+  {%- endif %}
+  <article class="pt-8 md:(pt-16)">
+    {{ content | safe }}
+  </article>
+</section>

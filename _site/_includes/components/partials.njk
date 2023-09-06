@@ -6,29 +6,43 @@
 {% endmacro %}
 
 {% macro heading(tag='h1',divider=false) %}
-<{{ tag }} class="pb-12 w-full text-2xl leading-tight font-black flex items-center space-x-4 lg:(text-[calc(3vw)])">
-  {%- if divider %}<i class="h-px bg-gray-500/20 flex-1 aria-hidden="true""></i>{%- endif %}
-  <span class="{% if divider %}flex-none{% else %}flex-1{% endif %}">
-    {{ caller() }}
-  </span>
-  {%- if divider %}<i class="h-px bg-gray-500/20 flex-1 aria-hidden="true""></i>{%- endif %}
+<{{ tag }} class="pt-10 w-full text-2xl leading-tight font-black lg:(text-5xl tracking-tight)">
+{{ caller() }}
+{%- if divider %}
+  <i class="mt-3 w-full h-1 flex gap-3 opacity-50 -rotate-1" aria-hidden="true">
+    <b class="w-4 bg-accent-500 rounded-sm"></b>
+    <b class="w-8 bg-brand-500 rounded-sm"></b>
+    <b class="bg-gray-500/40 flex-1 rounded-sm"></b>
+  </i>
+{%- endif %}
 </{{ tag }}>
 {% endmacro %}
 
 {% macro list() %}
-<ul class="mt-12 mx-auto px-6 w-full max-w-7xl grid-(& cols-1) gap-16 lg:(grid-cols-3)">
+<ul class="mt-12 mx-auto w-full max-w-7xl grid-(& cols-1) gap-16 lg:(grid-cols-3)">
   {{ caller() }}
 </ul>
 {% endmacro %}
 
-{% macro list_item(title='',desc='',ico='mdi:check') %}
-<li class="flex-(& col)">
-  {%- if ico %}  
-    <i class="mb-10 w-12 h-12 bg-gray-500/5 bg-gradient-to-t from-gray-900/10 text-(gray-600 2xl) flex items-center justify-center rounded-full shadow dark:(bg-gradient-to-b shadow-black/50)">
+{% macro list_item(title='',desc='',ico='',logo='',url='') %}
+<li class="group flex-(& col) relative">
+  {%- if ico %}
+    <i class="mb-6 w-12 h-12 bg-gray-500/5 bg-gradient-to-t from-gray-900/10 text-(gray-600 2xl) flex items-center justify-center rounded-full shadow motion-safe:(transition group-hover:(animate-blob)) dark:(bg-gradient-to-b shadow-black/50)">
       <iconify-icon icon="{{ ico }}" inline class="iconify opacity-50"></iconify-icon>
     </i>
   {%- endif %}
+  {%- if logo %}
+    <div class="mb-6 w-32">
+      <a href="{{ url }}">
+        {{ logo | safe }}
+        <span class="absolute inset-0"></span>
+      </a>
+    </div>
+  {%- else %}
   <b class="text-lg">{{ title }}</b>
-  <p class="mt-5 text-gray-500">{{ desc }}</p>
+  {%- endif %}
+  {% if desc %}  
+    <p class="mt-5 text-gray-500">{{ desc }}</p>
+  {% endif %}
 </li>
 {% endmacro %}

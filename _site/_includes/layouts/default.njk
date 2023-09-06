@@ -59,7 +59,7 @@
             <li>
               <a href="{{ item.url | url }}" class="text-gray-900 block relative"{% if item.url == page.url or item.url in page.url %} aria-current="page"{% endif %}>
                 {{ item.key }}
-                {% if item.url == page.url or item.url in page.url %}<b class="w-full h-[2px] bg-current absolute inset-x-0 -bottom-1 opacity-25"></b>{% endif %}
+                {% if item.url == page.url or item.url in page.url %}<b class="w-full h-[2px] bg-gray-500/30 absolute inset-x-0 -bottom-1 rounded-sm"></b>{% endif %}
               </a>
             </li>
             {%- endfor %}
@@ -77,7 +77,7 @@
             x-transition:leave-start="opacity-100 scale-100"
             x-transition:leave-end="opacity-0 scale-110 blur-lg"
           ></div>
-          <div x-show="menu" class="p-6 w-full bg-gray-50 overflow-y-auto fixed inset-y-0 right-0 z-50 motion-safe:(transition duration-300 ease-in-out) sm:(max-w-sm ring-(1 gray-900/10)"
+          <div x-show="menu" x-trap="menu" class="p-6 w-full max-w-sm bg-gray-50 overflow-y-auto fixed inset-y-0 right-0 z-50 motion-safe:(transition duration-300 ease-in-out) sm:(ring-(1 gray-900/10)"
             x-transition:enter-start="opacity-0 translate-x-10 blur-lg"
             x-transition:enter-end="opacity-100 translate-x-0"
             x-transition:leave-start="opacity-100 translate-x-0"
@@ -111,9 +111,6 @@
         </div>
       </header>
       <main class="w-full flex-1">
-        {%- if page.url !== '/' %}
-          {%- call el.heading() %}{{ title }}{%- endcall %}
-          {%- endif %}
         {{ content | safe }}
       </main>
 
@@ -132,7 +129,7 @@
               <a href="{{ '/_index.html' | url }}" class="group w-32 inline-flex transform motion-safe:(transition hover:(animate-blob))">
                 {% include "logo.njk" %}
               </a>
-              <ul class="py-5 text-2xl flex justify-center gap-5 md:(justify-start)">
+              <ul class="py-5 text-2xl flex justify-center gap-8 md:(justify-start)">
                 {%- for item in site.social %}
                 <li>
                   <a href="{{ item.url }}" class="opacity-50 motion-safe:(transition) hover:(text-{{ item.color }}-500 opacity-100)">
