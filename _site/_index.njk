@@ -77,7 +77,7 @@ permalink: _index.html
 
 <section class="py-24 px-6 sm:(py-32)">
   <div class="mx-auto max-w-7xl">
-    <h2 class="text-(gray-900 lg) font-semibold leading-8">{{ home_page.sponsors.heading }}</h2>
+    <h3 class="pt-8 text-(gray-500 base center) tracking-tight font-bold md:(text-2xl)">{{ home_page.sponsors.heading }}</h3>
     <div class="mx-auto max-w-sm mt-6 grid-(& cols-1) gap-0.5 overflow-hidden rounded-2xl md:(max-w-none grid-cols-3)">
       {%- for item in home_page.sponsors.items %}      
         <a href="{{ item.url | url }}" class="group p-4 bg-gray-500/5 text-gray-500 sm:(p-10)">

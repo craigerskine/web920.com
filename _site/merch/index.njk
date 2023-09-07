@@ -12,6 +12,19 @@ eleventyComputed:
 
 {%- import 'components/partials.njk' as el -%}
 
-{%- call el.heading(title=title,lead=lead) %}{%- endcall %}
+{%- call el.heading(title=title,lead=lead) %}
+  <div class="flex-(& col) items-center gap-2 md:(ml-auto flex-none)">
+    <a href="https://www.teepublic.com/t-shirt/50222322-web920" class="btn btn-accent">Buy merch</a>
+  </div>
+{%- endcall %}
 
-<p>Working on it...</p>
+<ul class="grid-(& cols-2) gap-10 md:(grid-cols-3)">
+  {% for item in merch_page.items %}  
+  <li>
+    <a href="{{ item.url | url }}" class="block space-y-2">
+      <picture><img src="/_assets/img/merch/{{ item.title | slugify }}.jpg" alt="{{ item.title }} with logo" class="aspect-video object-(cover top) rounded-lg" /></picture>
+      <p class="font-bold">{{ item.title }}</p>
+    </a>
+  </li>
+  {% endfor %}
+</ul>

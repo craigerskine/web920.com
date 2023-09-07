@@ -21,7 +21,7 @@ activities:
 
 ###
 topics:
-  heading: Topics
+  heading: Example topics
   items:
     - title: Sketch/Figma
       desc: Great layout and prototyping software used by modern UI/UX screen designers and developers.
