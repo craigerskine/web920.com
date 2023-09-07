@@ -22,10 +22,10 @@ permalink: _index.html
       <div class="mx-auto max-w-2xl gap-x-14 lg:(mx-0 flex max-w-none items-center)">
         <div class="w-full max-w-xl lg:(shrink-0 max-w-2xl)">
           <h1 class="text-(gray-900 4xl) font-black tracking-tight sm:(text-6xl)">
-            {{ page_home.hero.heading }}
+            {{ home_page.hero.heading }}
           </h1>
           <p class="mt-6 text-(gray-600 lg) leading-8 relative sm:(max-w-md) lg:(max-w-none)">
-            {{ page_home.hero.lead }}
+            {{ home_page.hero.lead }}
           </p>
           <div class="mt-12 flex items-center gap-x-6">
             <a href="{{ '/events/' | url }}" class="btn-brand">Coming events</a>
@@ -58,25 +58,25 @@ permalink: _index.html
 
 <section class="mx-auto p-6 w-full max-w-7xl space-y-12">
   {%- call el.heading(tag='h2',divider=true) %}
-  {{ page_home.activities.heading }}
+  {{ home_page.activities.heading }}
   {%- endcall %}
   {%- call el.list() %}
-    {%- for item in page_home.activities.items %}
+    {%- for item in home_page.activities.items %}
       {{ el.list_item(title=item.title,desc=item.desc,ico=item.ico) }}
     {%- endfor %}
   {%- endcall %}
   {%- call el.heading(tag='h2',divider=true) %}
-  {{ page_home.topics.heading }}
+  {{ home_page.topics.heading }}
   {%- endcall %}
   {%- call el.list() %}
-    {%- for item in page_home.topics.items %}
+    {%- for item in home_page.topics.items %}
       {{ el.list_item(title=item.title,desc=item.desc,ico=item.ico) }}
     {%- endfor %}
   {%- endcall %}
   <div class="py-24 sm:(py-32)">
-    <h2 class="text-(gray-900 lg) font-semibold leading-8">{{ page_home.sponsors.heading }}</h2>
+    <h2 class="text-(gray-900 lg) font-semibold leading-8">{{ home_page.sponsors.heading }}</h2>
     <div class="mt-6 grid-(& cols-2) gap-0.5 overflow-hidden sm:(mx-0 rounded-2xl) md:(grid-cols-3)">
-      {%- for item in page_home.sponsors.items %}      
+      {%- for item in home_page.sponsors.items %}      
         <a href="{{ item.url | url }}" class="group p-8 bg-gray-500/5 sm:(p-10) dark:(bg-white/5)">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" role="img" class="mx-auto fill-current text-gray-900 motion-safe:(group-hover:(animate-blob))">
             <title>{{ item.title }}</title>

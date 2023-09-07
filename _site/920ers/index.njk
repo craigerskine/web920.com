@@ -9,4 +9,38 @@ eleventyComputed:
     key: "{{ title }}"
 ---
 
-<p>Working on it...</p>
+{%- import 'components/partials.njk' as el -%}
+
+<div class="mb-8 max-w-lg text-lg space-y-6">
+  <h2 class="text-xl font-semibold md:(text-3xl)">{{ 920ers_page.heading }}</h2>
+  <p>{{ 920ers_page.lead }}</p>
+</div>
+
+<ul class="mx-auto max-w-sm grid-(& cols-1) gap-10 md:(grid-cols-2 max-w-none) lg:(grid-cols-3)">
+  {%- for item in 920ers_github %}
+    <li class="p-4 text-center space-y-3 relative">
+      <picture>
+        <img src="{{ item.avatar_url }}" alt="{{ item.login }} avatar" class="mx-auto w-16 h-16 rounded-full" />
+      </picture>
+      <div>
+        <a href="{{ item.html_url | url }}" class="group text-(brand-500 lg) block">
+          {%- set name -%}
+            {%- if item.name -%}
+              {{ item.name }}
+            {%- else -%}
+              {{ item.login }}
+            {%- endif -%}
+          {%- endset -%}
+          <b class="truncate block" title="{{ name }}">{{ name }}</b>
+          <span class="absolute inset-0" aria-hidden="true">
+            <span class="bg-brand-500/50 absolute inset-0 opacity-0 rounded-xl motion-safe:(transition group-hover:(animate-blob)) group-hover:(opacity-20)"></span>
+          </span>
+        </a>
+        <div class="pointer-events-none">
+          <small class="my-1 text-xs block opacity-70">@{{ item.login }}</small>
+          <p class="text-sm line-clamp-3">{{ item.bio }}</p>
+        </div>
+      </div>
+    </li>
+  {%- endfor %}
+</ul>
