@@ -5,8 +5,13 @@ eleventyNavigation:
   title: Coming
   order: 1
 eleventyComputed:
+  lead: "{{ events_page.lead }}"
   eleventyNavigation:
     key: "{{ title }}"
 ---
+
+{%- import 'components/partials.njk' as el -%}
+
+{%- call el.heading(title=title,lead=lead) %}{%- endcall %}
 
 <p>Working on it...</p>

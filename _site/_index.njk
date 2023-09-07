@@ -56,29 +56,32 @@ permalink: _index.html
   </div>
 </section>
 
-<section class="mx-auto p-6 w-full max-w-7xl space-y-12">
-  {%- call el.heading(tag='h2',divider=true) %}
-  {{ home_page.activities.heading }}
-  {%- endcall %}
-  {%- call el.list() %}
-    {%- for item in home_page.activities.items %}
-      {{ el.list_item(title=item.title,desc=item.desc,ico=item.ico,color='brand') }}
-    {%- endfor %}
-  {%- endcall %}
-  {%- call el.heading(tag='h2',divider=true) %}
-  {{ home_page.topics.heading }}
-  {%- endcall %}
-  {%- call el.list() %}
-    {%- for item in home_page.topics.items %}
-      {{ el.list_item(title=item.title,desc=item.desc,ico=item.ico,color='accent') }}
-    {%- endfor %}
-  {%- endcall %}
-  <div class="py-24 sm:(py-32)">
+<section class="mx-auto p-6 w-full max-w-xl space-y-12 lg:(max-w-screen-2xl)">
+  <div class="lg:(mr-auto max-w-7xl)">
+    {%- call el.heading(tag='h2',title=home_page.activities.heading) %}{%- endcall %}
+    {%- call el.list() %}
+      {%- for item in home_page.activities.items %}
+        {{ el.list_item(title=item.title,desc=item.desc,ico=item.ico,color='brand') }}
+      {%- endfor %}
+    {%- endcall %}
+  </div>
+  <div class="lg:(ml-auto max-w-7xl)">
+    {%- call el.heading(tag='h2',title=home_page.topics.heading) %}{%- endcall %}
+    {%- call el.list() %}
+      {%- for item in home_page.topics.items %}
+        {{ el.list_item(title=item.title,desc=item.desc,ico=item.ico,color='accent') }}
+      {%- endfor %}
+    {%- endcall %}
+  </div>
+</section>
+
+<section class="py-24 px-6 sm:(py-32)">
+  <div class="mx-auto max-w-7xl">
     <h2 class="text-(gray-900 lg) font-semibold leading-8">{{ home_page.sponsors.heading }}</h2>
     <div class="mx-auto max-w-sm mt-6 grid-(& cols-1) gap-0.5 overflow-hidden rounded-2xl md:(max-w-none grid-cols-3)">
       {%- for item in home_page.sponsors.items %}      
-        <a href="{{ item.url | url }}" class="group p-8 bg-gray-500/5 sm:(p-10) dark:(bg-white/5)">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" role="img" class="mx-auto w-full max-w-[150px] h-auto fill-current text-gray-900 motion-safe:(group-hover:(animate-blob)) md:(max-w-[200px])">
+        <a href="{{ item.url | url }}" class="group p-4 bg-gray-500/5 text-gray-500 sm:(p-10)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" role="img" class="mx-auto w-full max-w-[150px] h-auto fill-current motion-safe:(group-hover:(animate-blob)) md:(max-w-[200px])">
             <title>{{ item.title }}</title>
             {{ item.logo | safe }}
           </svg>

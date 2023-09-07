@@ -5,17 +5,23 @@
 </button>
 {% endmacro %}
 
-{% macro heading(tag='h1',divider=false) %}
-<{{ tag }} class="pt-10 w-full text-2xl leading-tight font-black lg:(text-5xl tracking-tight)">
-{{ caller() }}
-{%- if divider %}
-  <i class="mt-3 w-full h-1 flex gap-3 opacity-50 -rotate-1" aria-hidden="true">
-    <b class="w-4 bg-accent-500 rounded-sm"></b>
-    <b class="w-8 bg-brand-500 rounded-sm"></b>
-    <b class="bg-gray-500/40 flex-1 rounded-sm"></b>
-  </i>
-{%- endif %}
-</{{ tag }}>
+{% macro heading(tag='h1',title='',lead='') %}
+<div class="mb-8 md:(flex items-center gap-6)">
+  <div class="mx-auto mb-8 p-6 w-full max-w-xl bg-gray-500/5 text-lg space-y-6 rounded-xl md:(mb-0 mx-0) lg:(max-w-[50%])">
+    <{{ tag }} class="w-full text-2xl leading-tight font-black lg:(text-5xl tracking-tight)">
+      {{ title }}
+      <i class="mt-3 w-full h-1 flex gap-3 opacity-50 -rotate-1" aria-hidden="true">
+        <b class="w-4 bg-accent-500 rounded-sm"></b>
+        <b class="w-8 bg-brand-500 rounded-sm"></b>
+        <b class="bg-gray-500/40 flex-1 rounded-sm"></b>
+      </i>
+    </{{ tag }}>
+    {%- if lead %}  
+      <p class="text-gray-500">{{ lead }}</p>
+    {%- endif %}
+  </div>
+  {{ caller() }}
+</div>
 {% endmacro %}
 
 {% macro list() %}

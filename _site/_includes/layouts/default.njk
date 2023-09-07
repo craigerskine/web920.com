@@ -1,6 +1,6 @@
 {%- import 'components/partials.njk' as el -%}
 {%- set pagetitle -%}
-{%- if title %}{{ title +' # '+ _site.meta.title }}{% else %}{{ _site.meta.title or _site.meta.title }}{% endif -%}
+{%- if title %}{{ _site.meta.title +' { '+ title +' }' }}{% else %}{{ _site.meta.title or _site.meta.title }} { {{ _site.meta.desc }} }{% endif -%}
 {%- endset -%}
 
 <!doctype html>
@@ -10,7 +10,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>{{ pagetitle }}</title>
-    <meta name="description" content="{{ _site.meta.description }}" />
+    <meta name="description" content="{{ _site.meta.desc }}" />
     <meta name="author" content="{{ _site.meta.author }} - {{ _site.meta.author_url }}" />
     <meta name="generator" content="{{ eleventy.generator }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -129,10 +129,11 @@
               <a href="{{ '/_index.html' | url }}" class="group w-32 inline-flex transform motion-safe:(transition hover:(animate-blob))">
                 {% include "logo.njk" %}
               </a>
+              <p class="mx-auto mt-2 max-w-xs text-(gray-500 sm) md:(mx-0 text-base)">{{ home_page.hero.heading }}</p>
               <ul class="py-5 text-2xl flex justify-center gap-8 md:(justify-start)">
                 {%- for item in _site.social %}
                 <li>
-                  <a href="{{ item.url }}" class="opacity-50 motion-safe:(transition) hover:(text-{{ item.color }}-500 opacity-100)">
+                  <a href="{{ item.url }}" class="text-gray-500 motion-safe:(transition) hover:(text-{{ item.color }}-500 opacity-100)">
                     <iconify-icon icon="{{ item.ico }}" inline="false" class="iconify"></iconify-icon>
                   </a>
                 </li>

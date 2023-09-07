@@ -5,22 +5,19 @@ eleventyNavigation:
   title: Users
   order: 2
 eleventyComputed:
+  lead: "{{ 920ers_page.lead }}"
   eleventyNavigation:
     key: "{{ title }}"
 ---
 
 {%- import 'components/partials.njk' as el -%}
 
-<div class="md:(flex)">
-  <div class="mb-8 max-w-lg text-lg space-y-6">
-    <h2 class="text-xl font-semibold md:(text-3xl)">{{ 920ers_page.heading }}</h2>
-    <p>{{ 920ers_page.lead }}</p>
-  </div>
+{%- call el.heading(title=title,lead=lead) %}
   <div class="flex-(& col) items-center gap-2 md:(ml-auto flex-none)">
-    <a href="https://github.com/craigerskine/web920.com/" class="btn btn-brand">Add your profile</a>
+    <a href="https://github.com/craigerskine/web920.com/" class="btn btn-accent">Add your profile</a>
     <small class="flex items-center gap-2"><iconify-icon icon="mdi:github" inline class="iconify text-lg opacity-50"> </iconify-icon>Follow / Watch</small>
   </div>
-</div>
+{%- endcall %}
 
 <ul class="mx-auto max-w-sm grid-(& cols-1) gap-10 md:(grid-cols-2 max-w-none) lg:(grid-cols-3)">
   {%- for item in 920ers_github %}
