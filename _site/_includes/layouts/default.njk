@@ -1,6 +1,6 @@
 {%- import 'components/partials.njk' as el -%}
 {%- set pagetitle -%}
-{%- if title %}{{ title +' # '+ site.meta.title }}{% else %}{{ site.meta.title or site.meta.title }}{% endif -%}
+{%- if title %}{{ title +' # '+ _site.meta.title }}{% else %}{{ _site.meta.title or _site.meta.title }}{% endif -%}
 {%- endset -%}
 
 <!doctype html>
@@ -10,8 +10,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>{{ pagetitle }}</title>
-    <meta name="description" content="{{ site.meta.description }}" />
-    <meta name="author" content="{{ site.meta.author }} - {{ site.meta.author_url }}" />
+    <meta name="description" content="{{ _site.meta.description }}" />
+    <meta name="author" content="{{ _site.meta.author }} - {{ _site.meta.author_url }}" />
     <meta name="generator" content="{{ eleventy.generator }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link rel="icon" type="image/x-icon" href="{{ '/' | url }}favicon.ico" />
@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet" />
 
     <meta property="og:title" content="{{ pagetitle }}" />
-    <meta property="og:description" content="{{ site.meta.description }}" />
+    <meta property="og:description" content="{{ _site.meta.description }}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ page.url | url }}" />
     <meta property="og:image" content="{{ '/' | url }}_assets/img/og.png" />
@@ -57,9 +57,9 @@
           <ul class="text-sm leading-6 font-semibold hidden lg:(flex gap-x-12)">
             {%- for item in collections.all | eleventyNavigation %}
             <li>
-              <a href="{{ item.url | url }}" class="text-gray-900 block relative"{% if item.url == page.url or item.url in page.url %} aria-current="page"{% endif %}>
+              <a href="{{ item.url | url }}" class="text-gray-900 block relative motion-safe:(transition) hover:(text-gray-500)"{% if item.url == page.url or item.url in page.url %} aria-current="page"{% endif %}>
                 {{ item.key }}
-                {% if item.url == page.url or item.url in page.url %}<b class="w-full h-[2px] bg-gray-500/30 absolute inset-x-0 -bottom-1 rounded-sm"></b>{% endif %}
+                {% if item.url == page.url or item.url in page.url %}<b class="w-full h-[2px] bg-gray-500/30 absolute inset-x-0 -bottom-1 rounded-sm -rotate-2"></b>{% endif %}
               </a>
             </li>
             {%- endfor %}
@@ -130,7 +130,7 @@
                 {% include "logo.njk" %}
               </a>
               <ul class="py-5 text-2xl flex justify-center gap-8 md:(justify-start)">
-                {%- for item in site.social %}
+                {%- for item in _site.social %}
                 <li>
                   <a href="{{ item.url }}" class="opacity-50 motion-safe:(transition) hover:(text-{{ item.color }}-500 opacity-100)">
                     <iconify-icon icon="{{ item.ico }}" inline="false" class="iconify"></iconify-icon>
@@ -140,7 +140,7 @@
               </ul>
             </nav>
             <nav class="w-full text-sm flex-(& col) gap-10 md:(max-w-xl flex-row justify-end gap-32)">
-              {%- for cat in site.footer %}
+              {%- for cat in _site.footer %}
               <ul>
                 <li>
                   <b class="pb-1.5 font-black uppercase block opacity-75">{{ cat.title }}</b>
@@ -164,12 +164,12 @@
           </div>
           <div class="border-(t gray-500/20) py-3 text-(xs pri-500 center) leading-relaxed space-y-3 md:(py-6 text-start flex-(& wrap) justify-between space-y-0)">
             <p>
-              &copy;{% year %} {{ site.meta.title }}
-              <span class="block">Season 1: <a href="{{ site.meta.author_url | url }}" class="text-brand-700 motion-safe:(transition) hover:(text-brand-900)">{{ site.meta.author }}</a></span>
+              &copy;{% year %} {{ _site.meta.title }}
+              <span class="block">Season 1: <a href="{{ _site.meta.author_url | url }}" class="text-brand-700 motion-safe:(transition) hover:(text-brand-900)">{{ _site.meta.author }}</a></span>
             </p>
             <p class="md:(text-end)">
               Updated on:
-              <time datetime="{{ utils.time.raw }}" class="block">{{ utils.time.formatted }}</time>
+              <time datetime="{{ _utils.time.raw }}" class="block">{{ _utils.time.formatted }}</time>
             </p>
           </div>
         </div>

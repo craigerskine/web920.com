@@ -24,11 +24,11 @@
 </ul>
 {% endmacro %}
 
-{% macro list_item(title='',desc='',ico='',logo='',url='') %}
+{% macro list_item(title='',desc='',ico='',color='gray',logo='',url='') %}
 <li class="group flex-(& col) relative">
   {%- if ico %}
-    <i class="mb-6 w-12 h-12 bg-gray-500/5 bg-gradient-to-t from-gray-900/10 text-(gray-600 2xl) flex items-center justify-center rounded-full shadow motion-safe:(transition group-hover:(animate-blob)) dark:(bg-gradient-to-b shadow-black/50)">
-      <iconify-icon icon="{{ ico }}" inline class="iconify opacity-50"></iconify-icon>
+    <i class="mb-6 w-12 h-12 bg-{{ color }}-300 bg-gradient-to-b from-white/30 text-(black/90 2xl) flex items-center justify-center rounded-xl shadow motion-safe:(transition group-hover:(animate-blob)) dark:(bg-gradient-to-b text-white/90 shadow-black/50)">
+      <iconify-icon icon="{{ ico }}" inline class="iconify"></iconify-icon>
     </i>
   {%- endif %}
   {%- if logo %}

@@ -13,7 +13,9 @@ module.exports = async function() {
     }
     return arr;
   } catch(e) {
-    console.log( "Failed getting GitHub users, returning 0" );
+    console.log( "Failed getting GitHub users" );
+    arr = [];
+    return arr;
   }
 }
 

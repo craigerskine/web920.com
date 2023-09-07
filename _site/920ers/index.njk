@@ -11,9 +11,15 @@ eleventyComputed:
 
 {%- import 'components/partials.njk' as el -%}
 
-<div class="mb-8 max-w-lg text-lg space-y-6">
-  <h2 class="text-xl font-semibold md:(text-3xl)">{{ 920ers_page.heading }}</h2>
-  <p>{{ 920ers_page.lead }}</p>
+<div class="md:(flex)">
+  <div class="mb-8 max-w-lg text-lg space-y-6">
+    <h2 class="text-xl font-semibold md:(text-3xl)">{{ 920ers_page.heading }}</h2>
+    <p>{{ 920ers_page.lead }}</p>
+  </div>
+  <div class="flex-(& col) items-center gap-2 md:(ml-auto flex-none)">
+    <a href="https://github.com/craigerskine/web920.com/" class="btn btn-brand">Add your profile</a>
+    <small class="flex items-center gap-2"><iconify-icon icon="mdi:github" inline class="iconify text-lg opacity-50"> </iconify-icon>Follow / Watch</small>
+  </div>
 </div>
 
 <ul class="mx-auto max-w-sm grid-(& cols-1) gap-10 md:(grid-cols-2 max-w-none) lg:(grid-cols-3)">

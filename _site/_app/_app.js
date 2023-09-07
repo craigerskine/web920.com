@@ -55,7 +55,8 @@ install({
     },
   },
   rules: [
-    ['btn-', ({ $$ }) => `py-2.5 px-3.5 bg-${$$}-400 text-${$$}-900 text-sm font-semibold inline-flex items-center gap-1.5 rounded-md motion-safe:(transition) hover:(bg-${$$}-200)`],
+    ['btn', 'py-2.5 px-3.5 text-sm font-semibold inline-flex items-center gap-1.5 rounded-md motion-safe:(transition)'],
+    ['btn-', ({ $$ }) => `text-${$$}-500 ring-(2 inset current) hover:(text-${$$}-700 ring-4)`],
   ],
 });
 injectGlobal`

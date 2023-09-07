@@ -1,5 +1,5 @@
 {%- set pagetitle -%}
-{%- if title %}{{ title +' # '+ site.meta.title }}{% else %}{{ site.meta.title or site.meta.title }}{% endif -%}
+{%- if title %}{{ title +' # '+ _site.meta.title }}{% else %}{{ _site.meta.title or _site.meta.title }}{% endif -%}
 {%- endset -%}
 
 <!doctype html>
@@ -9,14 +9,14 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>{{ pagetitle }}</title>
-    <meta name="description" content="{{ site.meta.description }}" />
-    <meta name="author" content="{{ site.meta.author }} - {{ site.meta.author_url }}" />
+    <meta name="description" content="{{ _site.meta.description }}" />
+    <meta name="author" content="{{ _site.meta.author }} - {{ _site.meta.author_url }}" />
     <meta name="generator" content="{{ eleventy.generator }}" />
     <link href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <meta property="og:title" content="{{ pagetitle }}" />
-    <meta property="og:description" content="{{ site.meta.description }}" />
+    <meta property="og:description" content="{{ _site.meta.description }}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ page.url | url }}" />
     <meta property="og:image" content="{{ '/' | url }}_assets/img/og.png" />
