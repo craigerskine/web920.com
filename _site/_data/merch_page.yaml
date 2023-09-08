@@ -1,7 +1,17 @@
 ---
-lead: Buy stuff with our cool logo emblazoned to help support the our kooky little project.
+lead: Buy stuff emblazoned with our cool logo to help support our kooky little project.
 
 ###
 items:
   - title: Shirt
     url: https://www.teepublic.com/t-shirt/50222322-web920
+  - title: Magnet
+    url: https://www.teepublic.com/magnet/50222322-web920
+  - title: Sticker
+    url: https://www.teepublic.com/sticker/50222322-web920
+  - title: Tote
+    url: https://www.teepublic.com/tote/50222322-web920
+  - title: Pin
+    url: https://www.teepublic.com/pin/50222322-web920
+  - title: Pillow
+    url: https://www.teepublic.com/throw-pillow/50222322-web920
