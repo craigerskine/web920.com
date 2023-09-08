@@ -14,4 +14,62 @@ eleventyComputed:
 
 {%- call el.heading(title=title,lead=lead) %}{%- endcall %}
 
-<p>Working on it...</p>
+{%- set thisMonth = _utils.date.month | int -%}
+{%- set thisYear = _utils.date.year | int -%}
+
+{%- macro heading() %}
+  <h2 class="text-(gray-500 lg) tracking-tight font-bold uppercase">{{ caller() }}</h2>
+{%- endmacro %}
+
+{%- macro sessions(item=[]) %}
+  {%- if item.data.presenter !== 'NEED NAME' %}  
+  <li class="py-8 space-y-2">
+    <h3 class="text-xl flex-(& col) gap-y-1">
+      <small class="text-sm font-light text-gray-500">{{ item.page.date.toLocaleDateString('en-US', {month: '2-digit', day: '2-digit', year: 'numeric', timeZone: 'UTC'}) }}</small>
+      <strong{% if item.data.session == 'NEED SESSION NAME' %} class="text-red-500 motion-safe:(animate-pulse)"{% endif %}>{{ item.data.session }}</strong>
+    </h2>
+    <p class="flex items-center gap-2"><iconify-icon icon="mdi:account-voice" inline class="iconify text-lg opacity-50"></iconify-icon> {{ item.data.presenter }}</p>
+  </li>
+  {%- endif %}
+{%- endmacro %}
+
+<div class="pt-10 divide-(y gray-500/20) grid-(& cols-1) gap-10 lg:(divide-y-0 grid-cols-3)">
+  <div>
+    {% call heading() %}This month{% endcall %}
+    <ul class="divide-(y gray-500/20)">
+      {% for item in collections.event %}
+      {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
+      {%- set thatYear = item.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
+      {% if thisMonth === thatMonth and thisYear === thatYear %}    
+      {{ sessions(item=item) }}
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="pt-10 lg:(pt-0)">
+    {% call heading() %}Coming up{% endcall %}
+    <ul class="divide-(y gray-500/20)">
+      {% for item in collections.event %}
+      {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
+      {%- set thatYear = item.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
+      {% if (thisMonth < thatMonth and thisYear <= thatYear) or thisYear < thatYear %}
+      {{ sessions(item=item) }}
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="pt-10 lg:(pt-0)">
+    {% call heading() %}Archived{% endcall %}
+    <ul class="divide-(y gray-500/20)">
+      {% for item in collections.event %}
+      {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
+      {%- set thatYear = item.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
+      {% if (thisMonth > thatMonth and thisYear >= thatYear) or thisYear > thatYear %}
+      {{ sessions(item=item) }}
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+
