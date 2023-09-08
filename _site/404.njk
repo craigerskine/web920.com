@@ -3,3 +3,6 @@ layout: layouts/page.njk
 title: 404
 ---
 
+{%- import 'components/partials.njk' as el -%}
+
+{%- call el.heading(title=title,lead='Something bad happened') %}{%- endcall %}
