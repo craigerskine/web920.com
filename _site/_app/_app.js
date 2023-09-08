@@ -45,7 +45,7 @@ install({
         blob: {
           '15%': { transform: 'scale(1.4, 1.2)', },
           '40%': { transform: 'scale(.9, .9)', },
-          '75%': { transform: 'scale(1.08, 1)', },
+          '75%': { transform: 'scale(1.1, 1)', },
           '100%': { transform: 'scale(1, 1)', },
         },
       },
