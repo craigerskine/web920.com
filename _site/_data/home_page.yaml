@@ -8,15 +8,15 @@ activities:
   heading: Activities
   items:
     - title: In-person presentations
-      desc: Witness in awe as super smart designers & developers present topics and demos of cool web tech.
+      desc: Witness super smart designers & developers present sessions and demos of cool web tech.
       ico: mdi:microphone
 
     - title: Design/Development Q&A
-      desc: After the night's presentation feel free to ask questions and dig a little deeper into the topic at hand.
+      desc: After the night's presentation feel free to ask questions and dig a little deeper into the session.
       ico: mdi:chat-question
 
     - title: Networking
-      desc: Chat up your fellow peers about any web geekery you like. Hopfully it will be related to the evening's topic.
+      desc: Chat with fellow peers about any geekery you like. It doesn't have to be be related to the session.
       ico: mdi:account-network
 
 ###

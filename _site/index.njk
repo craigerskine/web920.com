@@ -56,7 +56,7 @@ layout: layouts/default.njk
 </section>
 
 <section class="mx-auto p-6 w-full max-w-xl space-y-12 lg:(max-w-screen-2xl)">
-  <div class="lg:(mr-auto max-w-7xl)">
+  <div class="lg:(mr-auto max-w-6xl)">
     {%- call el.heading(tag='h2',title=home_page.activities.heading) %}{%- endcall %}
     {%- call el.list() %}
       {%- for item in home_page.activities.items %}
@@ -64,7 +64,7 @@ layout: layouts/default.njk
       {%- endfor %}
     {%- endcall %}
   </div>
-  <div class="lg:(ml-auto max-w-7xl)">
+  <div class="lg:(ml-auto max-w-6xl)">
     {%- call el.heading(tag='h2',title=home_page.topics.heading) %}{%- endcall %}
     {%- call el.list() %}
       {%- for item in home_page.topics.items %}
