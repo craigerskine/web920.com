@@ -22,20 +22,21 @@ eleventyComputed:
 {%- endmacro %}
 
 {%- macro sessions(item=[]) %}
-  {%- if item.data.presenter !== 'NEED NAME' %}  
+  {#%- if item.data.presenter !== 'NEED NAME' %#}
   <li class="py-8 space-y-2">
     <h3 class="text-xl flex-(& col) gap-y-1">
       <small class="text-sm font-light text-gray-500">{{ item.page.date.toLocaleDateString('en-US', {month: '2-digit', day: '2-digit', year: 'numeric', timeZone: 'UTC'}) }}</small>
       <strong{% if item.data.session == 'NEED SESSION NAME' %} class="text-red-500 motion-safe:(animate-pulse)"{% endif %}>{{ item.data.session }}</strong>
     </h2>
     <p class="flex items-center gap-2"><iconify-icon icon="mdi:account-voice" inline class="iconify text-lg opacity-50"></iconify-icon> {{ item.data.presenter }}</p>
+    <div class="prose prose-sm text-gray-500 prose-strong:(text-current font-black)">{{ item.content | safe }}</div>
   </li>
-  {%- endif %}
+  {#%- endif %#}
 {%- endmacro %}
 
 <div class="pt-10 divide-(y gray-500/20) grid-(& cols-1) gap-10 lg:(divide-y-0 grid-cols-2)">
   <div>
-    {% call heading() %}This month{% endcall %}
+    <h2 class="py-4 font-semibold uppercase">This month</h2>
     <ul class="divide-(y gray-500/20)">
       {% for item in collections.event %}
       {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
@@ -47,14 +48,14 @@ eleventyComputed:
     </ul>
   </div>
   <div class="pt-10 lg:(pt-0)" x-data="{ tab: 0, categories: ['Coming up', 'Archived'] }">
-    <nav class="border-(b slate-900/10) p-3 bg-black/20 inline-flex rounded-lg">
-      <ul class="flex gap-x-3">
+    <nav class="flex justify-center relative z-20">
+      <ul class="border-(b slate-900/10) p-3 bg-black/20 flex gap-x-3 rounded-lg">
         <template x-for="(item, index) in categories">
-          <li><button @click.prevent="tab = index" :id="'tab-'+ index" x-text="item" class="px-3 py-1 rounded motion-safe:(transition)" :class="{'bg-white/50 dark:bg-white/10': tab == index}" role="tab" :aria-selected="tab == index" :aria-controls="'tabpanel-'+ index"></button></li>
+          <li><button @click.prevent="tab = index" :id="'tab-'+ index" x-text="item" class="px-3 py-1 font-semibold uppercase rounded motion-safe:(transition)" :class="{'bg-white/50 dark:bg-white/10': tab == index}" role="tab" :aria-selected="tab == index" :aria-controls="'tabpanel-'+ index"></button></li>
         </template>
       </ul>
     </nav>
-    <div class="relative">
+    <div class="relative z-10">
       <template x-for="(item, index) in categories">
         <div :id="'tbpanel-'+ index" x-show="tab === index" class="motion-safe:(transition ease-in-out)" role="tabpanel" :aria-labelledby="'tab-'+ index"
           x-transition:enter="absolute top-0 inset-x-0"
@@ -63,6 +64,7 @@ eleventyComputed:
           x-transition:leave-start="opacity-100 scale-100"
           x-transition:leave-end="opacity-0 scale-110 blur-lg"
         >
+          {# coming up #}
           <template x-if="index == 0">
             <ul class="divide-(y gray-500/20)">
               {% for item in collections.event %}
@@ -74,9 +76,10 @@ eleventyComputed:
               {% endfor %}
             </ul>
           </template>
+          {# archived #}
           <template x-if="index == 1">
             <ul class="divide-(y gray-500/20)">
-              {% for item in collections.event %}
+              {% for item in collections.event | reverse %}
               {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
               {%- set thatYear = item.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
               {% if (thisMonth > thatMonth and thisYear >= thatYear) or thisYear > thatYear %}
