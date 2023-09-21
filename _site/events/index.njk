@@ -23,29 +23,34 @@ eleventyComputed:
 
 {%- macro sessions(item=[]) %}
   {#%- if item.data.presenter !== 'NEED NAME' %#}
-  <li class="py-8 space-y-2">
-    <h3 class="text-xl flex-(& col) gap-y-1">
-      <small class="text-sm font-light text-gray-500">{{ item.page.date.toLocaleDateString('en-US', {month: '2-digit', day: '2-digit', year: 'numeric', timeZone: 'UTC'}) }}</small>
-      <strong{% if item.data.session == 'NEED SESSION NAME' %} class="text-red-500 motion-safe:(animate-pulse)"{% endif %}>{{ item.data.session }}</strong>
-    </h2>
-    <p class="flex items-center gap-2"><iconify-icon icon="mdi:account-voice" inline class="iconify text-lg opacity-50"></iconify-icon> {{ item.data.presenter }}</p>
-    <div class="prose prose-sm text-gray-500 prose-strong:(text-current font-black)">{{ item.content | safe }}</div>
+  <li class="py-8">
+    <h3 class="text-xl leading-none flex-(& col)">
+      <small class="text-sm leading-none font-light opacity-70">{{ item.page.date.toLocaleDateString('en-US', {month: '2-digit', day: '2-digit', year: 'numeric', timeZone: 'UTC'}) }}</small>
+      <strong class="py-3{% if item.data.session == 'NEED SESSION NAME' %} text-red-500 motion-safe:(animate-pulse){% endif %}">{{ item.data.session }}</strong>
+    </h3>
+    <p class="pb-6 leading-none flex items-center gap-2"><iconify-icon icon="mdi:account-voice" inline class="iconify text-lg opacity-50"></iconify-icon> {{ item.data.presenter }}</p>
+    <div class="prose prose-sm opacity-70 prose-strong:(text-current font-black)">{{ item.content | safe }}</div>
   </li>
   {#%- endif %#}
 {%- endmacro %}
 
 <div class="pt-10 divide-(y gray-500/20) grid-(& cols-1) gap-10 lg:(divide-y-0 grid-cols-2)">
   <div>
-    <h2 class="py-4 font-semibold uppercase">This month</h2>
-    <ul class="divide-(y gray-500/20)">
-      {% for item in collections.event %}
-      {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
-      {%- set thatYear = item.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
-      {% if thisMonth === thatMonth and thisYear === thatYear %}    
-      {{ sessions(item=item) }}
-      {% endif %}
-      {% endfor %}
-    </ul>
+    <h3 class="border-(b brand-900/10) py-4 px-6 bg-brand-300/20 font-semibold uppercase rounded-lg">
+      {# px-3 py-1 font-semibold uppercase rounded #}
+      This month
+    </h3>
+    <div>
+      <ul class="divide-(y gray-500/20)">
+        {% for item in collections.event %}
+        {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
+        {%- set thatYear = item.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
+        {% if thisMonth === thatMonth and thisYear === thatYear %}    
+        {{ sessions(item=item) }}
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
   </div>
   <div class="pt-10 lg:(pt-0)" x-data="{ tab: 0, categories: ['Coming up', 'Archived'] }">
     <nav class="flex justify-center relative z-20">
