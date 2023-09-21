@@ -129,7 +129,7 @@
               <a href="{{ '/' | url }}" class="group w-32 inline-flex transform motion-safe:(transition hover:(animate-blob))">
                 {% include "logo.njk" %}
               </a>
-              <p class="mx-auto mt-2 max-w-xs text-(gray-500 sm) md:(mx-0 text-base)">{{ home_page.hero.heading }}</p>
+              <p class="mx-auto mt-2 max-w-xs text-(gray-500 sm) text-wrap-balance md:(mx-0 text-base)">{{ home_page.hero.heading }}</p>
               <ul class="py-5 text-2xl flex justify-center gap-8 md:(justify-start)">
                 {%- for item in _site.social %}
                 <li>
@@ -140,10 +140,10 @@
                 {%- endfor %}
               </ul>
             </div>
-            <nav class="w-full text-sm flex-(& col) gap-10 md:(max-w-xl flex-row justify-end gap-32)">
+            <nav class="w-full text-sm flex justify-center gap-10 md:(max-w-xl justify-end gap-32)">
               {%- for cat in _site.footer %}
               <ul>
-                <li>
+                <li class="text-start">
                   <b class="pb-1.5 font-black uppercase block opacity-75">{{ cat.title }}</b>
                   <ul class="mx-auto w-[120px] divide-(y gray-500/20) md:(mx-0)">
                     {# sitemap #}
