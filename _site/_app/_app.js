@@ -55,6 +55,7 @@ install({
     },
   },
   rules: [
+    ['text-wrap-(unset|wrap|nowrap|balance)', 'textWrap'],
     ['btn', 'py-2.5 px-3.5 text-sm font-semibold inline-flex items-center gap-1.5 rounded-md motion-safe:(transition)'],
     ['btn-', ({ $$ }) => `text-${$$}-500 ring-(2 inset current) hover:(text-${$$}-700 ring-4)`],
   ],

@@ -8,13 +8,13 @@
 {% macro heading(tag='h1',title='',lead='') %}
 <div class="mb-8 md:(flex items-center gap-10)">
   <div class="mx-auto mb-8 py-6 w-full max-w-xl text-lg flex-(& col) gap-6 relative md:(mb-0 mx-0) lg:(max-w-[50%])">
-    <{{ tag }} class="w-full text-{%if tag == 'h1' %}2xl{% else %}xl{% endif %} leading-tight font-black relative lg:(text-{%if tag == 'h1' %}5xl{% else %}3xl{% endif %} tracking-tight)">
+    <{{ tag }} class="w-full text-{%if tag == 'h1' %}2xl{% else %}xl{% endif %} text-wrap-balance leading-tight font-black relative lg:(text-{%if tag == 'h1' %}5xl{% else %}3xl{% endif %} tracking-tight)">
       {{ title }}
     </{{ tag }}>
     {%- if lead %}  
-    <p class="text-gray-500 relative">{{ lead | safe }}</p>
+    <p class="text-gray-500 text-wrap-balance relative">{{ lead | safe }}</p>
     {%- endif %}
-    <i class="mt-3 -mr-9 h-1 flex gap-3 opacity-50 -rotate-1 md:(-mr-12)" aria-hidden="true">
+    <i class="mt-2 h-1 flex gap-3 opacity-50 -rotate-1" aria-hidden="true">
       <b class="w-4 bg-accent-500 rounded-sm"></b>
       <b class="w-8 bg-brand-500 rounded-sm"></b>
       <b class="bg-gray-500/40 flex-1 rounded-sm"></b>
