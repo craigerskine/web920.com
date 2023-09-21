@@ -163,13 +163,13 @@
               {%- endfor %}
             </nav>
           </div>
-          <div class="border-(t gray-500/20) py-3 text-(xs pri-500 center) leading-relaxed space-y-3 md:(py-6 text-start flex-(& wrap) justify-between space-y-0)">
+          <div class="border-(t gray-500/20) py-3 text-(xs pri-500) leading-relaxed flex items-center justify-between md:(py-6)">
             <p>
               &copy;{% year %} {{ _site.meta.title }}
               <span class="block">Season 1: <a href="{{ _site.meta.author_url | url }}" class="text-brand-700 motion-safe:(transition) hover:(text-brand-900)">{{ _site.meta.author }}</a></span>
             </p>
-            <p class="md:(text-end)">
-              Updated on:
+            <p class="text-end">
+              Updated:
               <time datetime="{{ _utils.date.raw }}" class="block">{{ _utils.date.formatted }}</time>
             </p>
           </div>
