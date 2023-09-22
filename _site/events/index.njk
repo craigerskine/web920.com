@@ -42,13 +42,20 @@ eleventyComputed:
     </h3>
     <div>
       <ul class="divide-(y gray-500/20)">
-        {% for item in collections.event %}
+        {%- for item in collections.event %}
         {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
         {%- set thatYear = item.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
-        {% if thisMonth === thatMonth and thisYear === thatYear %}    
+        {%- if thisMonth === thatMonth and thisYear === thatYear %}    
         {{ sessions(item=item) }}
-        {% endif %}
-        {% endfor %}
+        {%- else %}
+        {%- if loop.first %}  
+          <p class="mt-12 py-12 text-center grid-(& cols-1) gap-5 ring-(inset 1 gray-500/20) rounded-lg">
+            <iconify-icon icon="mdi:emoticon-dead" inline class="iconify mx-auto text-8xl opacity-20"></iconify-icon>
+            <strong>Nothing this month</strong>
+          </p>
+        {%- endif %}
+        {%- endif %}
+        {%- endfor %}
       </ul>
     </div>
   </div>
