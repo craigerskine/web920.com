@@ -27,7 +27,7 @@ eleventyComputed:
       <strong class="py-3{% if item.data.session == 'NEED SESSION NAME' %} text-red-500 motion-safe:(animate-pulse){% endif %}">{{ item.data.session }}</strong>
     </h3>
     <p class="pb-6 leading-none flex items-center gap-2"><iconify-icon icon="mdi:account-voice" inline class="iconify text-lg opacity-50"></iconify-icon> {{ item.data.presenter }}</p>
-    <div class="prose prose-sm opacity-70 prose-strong:(text-current font-black)">{{ item.content | safe }}</div>
+    <div class="prose prose-sm line-clamp-3 opacity-70 prose-strong:(text-current font-black)">{{ item.content | safe }}</div>
   </li>
   {#%- endif %#}
 {%- endmacro %}
