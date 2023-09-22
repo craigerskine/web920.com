@@ -11,9 +11,7 @@ eleventyComputed:
 ---
 
 {%- import 'components/partials.njk' as el -%}
-
 {%- call el.heading(title=title,lead=lead) %}{%- endcall %}
-
 {%- set thisMonth = _utils.date.month | int -%}
 {%- set thisYear = _utils.date.year | int -%}
 
@@ -34,30 +32,29 @@ eleventyComputed:
   {#%- endif %#}
 {%- endmacro %}
 
-<div class="pt-10 divide-(y gray-500/20) grid-(& cols-1) gap-10 lg:(divide-y-0 grid-cols-2)">
+<div class="pt-10 divide-(y gray-500/20) grid-(& cols-1) gap-10 lg:(divide-y-0 grid-cols-2 gap-32)">
   <div>
-    <h3 class="border-(b brand-900/10) py-4 px-6 bg-brand-300/20 font-semibold uppercase rounded-lg">
-      {# px-3 py-1 font-semibold uppercase rounded #}
-      This month
-    </h3>
-    <div>
-      <ul class="divide-(y gray-500/20)">
-        {%- for item in collections.event %}
-        {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
-        {%- set thatYear = item.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
-        {%- if thisMonth === thatMonth and thisYear === thatYear %}    
-        {{ sessions(item=item) }}
-        {%- else %}
-        {%- if loop.first %}  
-          <p class="mt-12 py-12 text-center grid-(& cols-1) gap-5 ring-(inset 1 gray-500/20) rounded-lg">
-            <iconify-icon icon="mdi:emoticon-dead" inline class="iconify mx-auto text-8xl opacity-20"></iconify-icon>
-            <strong>Nothing this month</strong>
-          </p>
-        {%- endif %}
-        {%- endif %}
-        {%- endfor %}
+    {%- for item in collections.event %}
+    {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
+    {%- set thatYear = item.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
+    {%- if thisMonth === thatMonth and thisYear === thatYear %}
+    {%- if loop.first %}
+      <h3 class="border-(b brand-900/10) py-4 px-6 bg-brand-300/20 font-semibold uppercase rounded-lg">
+        This month
+      </h3>
+      <ul>
+      {{ sessions(item=item) }}
       </ul>
-    </div>
+      {%- endif %}
+    {%- else %}
+    {%- if loop.first %}
+      <h3 class="py-12 bg-gray-500/10 text-center grid-(& cols-1) gap-5 ring-(& inset gray-500/20) rounded-lg">
+        <iconify-icon icon="mdi:emoticon-dead" inline class="iconify mx-auto text-8xl opacity-20"></iconify-icon>
+        <strong>Nothing this month</strong>
+      </h3>
+    {%- endif %}
+    {%- endif %}
+    {%- endfor %}
   </div>
   <div class="pt-10 lg:(pt-0)" x-data="{ tab: 0, categories: ['Coming up', 'Archived'] }">
     <nav class="flex justify-center relative z-20">
