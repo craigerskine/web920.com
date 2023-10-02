@@ -38,21 +38,19 @@ eleventyComputed:
     {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
     {%- set thatYear = item.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
     {%- if thisMonth === thatMonth and thisYear === thatYear %}
-    {%- if loop.first %}
       <h3 class="border-(b brand-900/10) py-4 px-6 bg-brand-300/20 font-semibold uppercase rounded-lg">
         This month
       </h3>
       <ul>
       {{ sessions(item=item) }}
       </ul>
-      {%- endif %}
     {%- else %}
-    {%- if loop.first %}
-      <h3 class="py-12 bg-gray-500/10 text-center grid-(& cols-1) gap-5 ring-(& inset gray-500/20) rounded-lg">
-        <iconify-icon icon="mdi:emoticon-dead" inline class="iconify mx-auto text-8xl opacity-20"></iconify-icon>
-        <strong>Nothing this month</strong>
-      </h3>
-    {%- endif %}
+      {#
+        <h3 class="py-12 bg-gray-500/10 text-center grid-(& cols-1) gap-5 ring-(& inset gray-500/20) rounded-lg">
+          <iconify-icon icon="mdi:emoticon-dead" inline class="iconify mx-auto text-8xl opacity-20"></iconify-icon>
+          <strong>Nothing this month</strong>
+        </h3>
+      #}
     {%- endif %}
     {%- endfor %}
   </div>
@@ -102,5 +100,3 @@ eleventyComputed:
     </div>
   </div>
 </div>
-
-
