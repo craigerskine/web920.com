@@ -14,11 +14,6 @@ eleventyComputed:
 {%- call el.heading(title=title,lead=lead) %}{%- endcall %}
 {%- set thisMonth = _utils.date.month | int -%}
 {%- set thisYear = _utils.date.year | int -%}
-
-{%- macro heading() %}
-  <h2 class="text-(gray-500 lg) tracking-tight font-bold uppercase">{{ caller() }}</h2>
-{%- endmacro %}
-
 {%- macro sessions(item=[]) %}
   {#%- if item.data.presenter !== 'NEED NAME' %#}
   <li class="py-8">
@@ -32,71 +27,112 @@ eleventyComputed:
   {#%- endif %#}
 {%- endmacro %}
 
-<div class="pt-10 divide-(y gray-500/20) grid-(& cols-1) gap-10 lg:(divide-y-0 grid-cols-2 gap-32)">
+{%- macro heading() %}
+  <h2 class="text-(gray-500 lg) tracking-tight font-bold uppercase">{{ caller() }}</h2>
+{%- endmacro %}
+
+{# COMMENT OUT WHEN WE REALLY START #}
+<div class="pt-10 grid-(& cols-1) gap-10 lg:(grid-cols-2 gap-32)">
   <div>
-    {%- for item in collections.event %}
-    {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
-    {%- set thatYear = item.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
-    {%- if thisMonth === thatMonth and thisYear === thatYear %}
-      <h3 class="border-(b brand-900/10) py-4 px-6 bg-brand-300/20 font-semibold uppercase rounded-lg">
-        This month
-      </h3>
-      <ul>
-      {{ sessions(item=item) }}
-      </ul>
-    {%- else %}
-      {#
-        <h3 class="py-12 bg-gray-500/10 text-center grid-(& cols-1) gap-5 ring-(& inset gray-500/20) rounded-lg">
-          <iconify-icon icon="mdi:emoticon-dead" inline class="iconify mx-auto text-8xl opacity-20"></iconify-icon>
-          <strong>Nothing this month</strong>
-        </h3>
-      #}
-    {%- endif %}
-    {%- endfor %}
+    <h3 class="border-(b brand-900/10) py-4 px-6 bg-brand-300/20 font-semibold uppercase rounded-lg">
+      Coming up
+    </h3>
+    <p class="mt-8">We're working on it...</p>
   </div>
-  <div class="pt-10 lg:(pt-0)" x-data="{ tab: 0, categories: ['Coming up', 'Archived'] }">
-    <nav class="flex justify-center relative z-20">
-      <ul class="border-(b slate-900/10) p-3 bg-black/20 flex gap-x-3 rounded-lg">
-        <template x-for="(item, index) in categories">
-          <li><button @click.prevent="tab = index" :id="'tab-'+ index" x-text="item" class="px-3 py-1 font-semibold uppercase rounded motion-safe:(transition)" :class="{'bg-white/50 dark:bg-white/10': tab == index}" role="tab" :aria-selected="tab == index" :aria-controls="'tabpanel-'+ index"></button></li>
-        </template>
-      </ul>
-    </nav>
-    <div class="relative z-10">
-      <template x-for="(item, index) in categories">
-        <div :id="'tbpanel-'+ index" x-show="tab === index" class="motion-safe:(transition ease-in-out)" role="tabpanel" :aria-labelledby="'tab-'+ index"
-          x-transition:enter="absolute top-0 inset-x-0"
-          x-transition:enter-start="opacity-0 scale-110 blur-lg"
-          x-transition:enter-end="opacity-100 scale-100"
-          x-transition:leave-start="opacity-100 scale-100"
-          x-transition:leave-end="opacity-0 scale-110 blur-lg"
-        >
-          {# coming up #}
-          <template x-if="index == 0">
-            <ul class="divide-(y gray-500/20)">
-              {% for item in collections.event %}
-              {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
-              {%- set thatYear = item.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
-              {% if (thisMonth < thatMonth and thisYear <= thatYear) or thisYear < thatYear %}
-              {{ sessions(item=item) }}
-              {% endif %}
-              {% endfor %}
-            </ul>
-          </template>
-          {# archived #}
-          <template x-if="index == 1">
-            <ul class="divide-(y gray-500/20)">
-              {% for item in collections.event | reverse %}
-              {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
-              {%- set thatYear = item.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
-              {% if (thisMonth > thatMonth and thisYear >= thatYear) or thisYear > thatYear %}
-              {{ sessions(item=item) }}
-              {% endif %}
-              {% endfor %}
-            </ul>
-          </template>
-        </div>
-      </template>
-    </div>
+  <div>
+    <h3 class="border-(b brand-900/10) py-4 px-6 bg-brand-300/20 font-semibold uppercase rounded-lg">
+      Archived
+    </h3>
+    <ul class="divide-(y gray-500/20)">
+      {% for item in collections.event | reverse %}
+      {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
+      {%- set thatYear = item.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
+      {% if (thisMonth > thatMonth and thisYear >= thatYear) or thisYear > thatYear %}
+      {{ sessions(item=item) }}
+      {% endif %}
+      {% endfor %}
+    </ul>
   </div>
 </div>
+
+
+{# UNCOMMENT WHEN WE REALLY START #}
+<!--
+  <div class="pt-10 divide-(y gray-500/20) grid-(& cols-1) gap-10 lg:(divide-y-0 grid-cols-2 gap-32)">
+    <div>
+      {%- for item in collections.event %}
+      {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
+      {%- set thatYear = item.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
+      {%- if thisMonth === thatMonth and thisYear === thatYear %}
+        <h3 class="border-(b brand-900/10) py-4 px-6 bg-brand-300/20 font-semibold uppercase rounded-lg">
+          This month
+        </h3>
+        <ul>
+        {{ sessions(item=item) }}
+        </ul>
+      {%- else %}
+        {#
+          <h3 class="py-12 bg-gray-500/10 text-center grid-(& cols-1) gap-5 ring-(& inset gray-500/20) rounded-lg">
+            <iconify-icon icon="mdi:emoticon-dead" inline class="iconify mx-auto text-8xl opacity-20"></iconify-icon>
+            <strong>Nothing this month</strong>
+          </h3>
+        #}
+      {%- endif %}
+      {%- endfor %}
+    </div>
+    <div class="pt-10 lg:(pt-0)" x-data="{ tab: 0, categories: ['Coming up', 'Archived'] }">
+      <nav class="flex justify-center relative z-20">
+        <ul class="[&_[aria-expanded=true]]:(bg-white/50 dark:bg-white/10) border-(b slate-900/10) p-3 bg-black/20 flex gap-x-3 rounded-lg" role="tablist">
+          <template x-for="(item, index) in categories">
+            <li role="presentation">
+              <button
+                @click.prevent="tab = index" :id="'tab-'+ index"
+                class="px-3 py-1 font-semibold uppercase rounded motion-safe:(transition)"
+                x-text="item"
+                role="tab"
+                :aria-expanded="tab == index"
+                :aria-controls="'tabpanel-'+ index">
+              </button>
+            </li>
+          </template>
+        </ul>
+      </nav>
+      <div class="relative z-10">
+        <template x-for="(item, index) in categories">
+          <div :id="'tbpanel-'+ index" x-show="tab === index" class="motion-safe:(transition ease-in-out)" role="tabpanel" :aria-labelledby="'tab-'+ index"
+            x-transition:enter="absolute top-0 inset-x-0"
+            x-transition:enter-start="opacity-0 scale-110 blur-lg"
+            x-transition:enter-end="opacity-100 scale-100"
+            x-transition:leave-start="opacity-100 scale-100"
+            x-transition:leave-end="opacity-0 scale-110 blur-lg"
+          >
+            {# coming up #}
+            <template x-if="index == 0">
+              <ul class="divide-(y gray-500/20)">
+                {% for item in collections.event %}
+                {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
+                {%- set thatYear = item.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
+                {% if (thisMonth < thatMonth and thisYear <= thatYear) or thisYear < thatYear %}
+                {{ sessions(item=item) }}
+                {% endif %}
+                {% endfor %}
+              </ul>
+            </template>
+            {# archived #}
+            <template x-if="index == 1">
+              <ul class="divide-(y gray-500/20)">
+                {% for item in collections.event | reverse %}
+                {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
+                {%- set thatYear = item.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
+                {% if (thisMonth > thatMonth and thisYear >= thatYear) or thisYear > thatYear %}
+                {{ sessions(item=item) }}
+                {% endif %}
+                {% endfor %}
+              </ul>
+            </template>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+-->
