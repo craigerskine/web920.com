@@ -15,7 +15,6 @@ eleventyComputed:
 {%- set thisMonth = _utils.date.month | int -%}
 {%- set thisYear = _utils.date.year | int -%}
 {%- macro sessions(item=[]) %}
-  {#%- if item.data.presenter !== 'NEED NAME' %#}
   <li class="[&:last-child_.timeline-line]:(hidden) flex gap-5">
     <div class="timeline-item flex-(& col) items-center gap-1">
       <span class="timeline-ico">
@@ -38,13 +37,18 @@ eleventyComputed:
       </div>
     </div>
   </li>
-  {#%- endif %#}
 {%- endmacro %}
 
 {%- macro heading() %}
   <h2 class="text-(gray-500 lg) tracking-tight font-bold uppercase">{{ caller() }}</h2>
 {%- endmacro %}
 
+<h3 class="py-12 bg-gray-500/10 text-center grid-(& cols-1) gap-5 ring-(& inset gray-500/20) rounded-lg">
+  <iconify-icon icon="mdi:emoticon-dead" inline class="iconify mx-auto text-8xl opacity-20"></iconify-icon>
+  <strong>We're working on it...</strong>
+</h3>
+
+{#
 <div class="pt-10 divide-(y gray-500/20) grid-(& cols-1) gap-10 lg:(divide-y-0 grid-cols-2 gap-32)">
   <div>
     {%- for item in collections.event %}
@@ -58,12 +62,12 @@ eleventyComputed:
       {{ sessions(item=item) }}
       </ul>
     {%- else %}
-      {#
+      <!--
         <h3 class="py-12 bg-gray-500/10 text-center grid-(& cols-1) gap-5 ring-(& inset gray-500/20) rounded-lg">
           <iconify-icon icon="mdi:emoticon-dead" inline class="iconify mx-auto text-8xl opacity-20"></iconify-icon>
           <strong>Nothing this month</strong>
         </h3>
-      #}
+      -->
     {%- endif %}
     {%- endfor %}
   </div>
@@ -93,7 +97,7 @@ eleventyComputed:
           x-transition:leave-start="opacity-100 scale-100"
           x-transition:leave-end="opacity-0 scale-110 blur-lg"
         >
-          {# coming up #}
+          <!-- coming up -->
           <template x-if="index == 0">
             <ul class="pt-10 space-y-2">
               {% for item in collections.event %}
@@ -105,7 +109,7 @@ eleventyComputed:
               {% endfor %}
             </ul>
           </template>
-          {# archived #}
+          <!-- archived -->
           <template x-if="index == 1">
             <ul class="pt-10 space-y-2">
               {% for item in collections.event | reverse %}
@@ -122,4 +126,4 @@ eleventyComputed:
     </div>
   </div>
 </div>
-
+#}
