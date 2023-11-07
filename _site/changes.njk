@@ -1,0 +1,21 @@
+---
+layout: layouts/page.njk
+title: Change Log
+---
+
+{%- import 'components/partials.njk' as el -%}
+
+{%- call el.heading(title=title,lead='Nerdy data incoming...') %}{%- endcall %}
+
+<section class="relative">
+  <ol class="space-y-2 relative">
+    {%- for commit in collections.recentChanges %}
+    <li class="">
+      <h2 class="mb-2 text-sm leading-6 font-semibold"><time>{{ commit.authorDate }}</time></h2>
+      <p>{{ commit.authorName }}</p>
+      <p>{{ commit.subject }}</p>
+      <p>{{ commit.abbrevHash }}</p>
+    </li>
+    {%- endfor %}
+  </ol>
+</section>

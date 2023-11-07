@@ -26,6 +26,7 @@
     "@twind/preset-tailwind": "^1.1.4",
     "@twind/preset-typography": "^1.0.7",
     "alpinejs": "^3.13.0",
+    "eleventy-plugin-recent-changes": "^1.0.1",
     "esbuild": "^0.18.20",
     "iconify-icon": "^1.0.8",
     "instant.page": "^5.2.0",
