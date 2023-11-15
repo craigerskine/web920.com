@@ -43,31 +43,32 @@ eleventyComputed:
   <h2 class="text-(gray-500 lg) tracking-tight font-bold uppercase">{{ caller() }}</h2>
 {%- endmacro %}
 
+{# 
 <h3 class="mx-auto border-(t white/20) py-12 max-w-2xl bg-gradient-to-t from-transparent via-transparent to-white text-center grid-(& cols-1) gap-5 rounded-lg shadow-2xl motion-safe:(animate-pulse) dark:(to-gray-500/10)">
   <iconify-icon icon="mdi:emoticon-sick" inline class="iconify mx-auto text-8xl opacity-20"></iconify-icon>
   <strong>We're working on it...</strong>
 </h3>
+#}
 
-{#
 <div class="pt-10 divide-(y gray-500/20) grid-(& cols-1) gap-10 lg:(divide-y-0 grid-cols-2 gap-32)">
   <div>
+    <h3 class="border-(b slate-900/10) p-3 bg-black/20 flex gap-x-3 rounded-lg">
+      <b class="py-1 px-3 uppercase">This month</b>
+    </h3>
     {%- for item in collections.event %}
     {%- set thatMonth = item.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
     {%- set thatYear = item.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
     {%- if thisMonth === thatMonth and thisYear === thatYear %}
-      <h3 class="border-(b brand-900/10) py-4 px-6 bg-brand-300/20 font-semibold uppercase rounded-lg">
-        This month
-      </h3>
       <ul class="pt-10 space-y-2">
       {{ sessions(item=item) }}
       </ul>
     {%- else %}
-      <!--
-        <h3 class="py-12 bg-gray-500/10 text-center grid-(& cols-1) gap-5 ring-(& inset gray-500/20) rounded-lg">
-          <iconify-icon icon="mdi:emoticon-dead" inline class="iconify mx-auto text-8xl opacity-20"></iconify-icon>
-          <strong>Nothing this month</strong>
-        </h3>
-      -->
+      {%- if loop.first %}  
+      <h3 class="mt-12 py-12 bg-gray-500/10 text-center grid-(& cols-1) gap-5 ring-(& inset gray-500/20) rounded-lg">
+        <iconify-icon icon="mdi:emoticon-dead" inline class="iconify mx-auto text-8xl opacity-20"></iconify-icon>
+        <strong>Nothing this month</strong>
+      </h3>
+      {%- endif %}
     {%- endif %}
     {%- endfor %}
   </div>
@@ -126,4 +127,3 @@ eleventyComputed:
     </div>
   </div>
 </div>
-#}
