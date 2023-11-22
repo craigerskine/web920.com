@@ -12,8 +12,40 @@ eleventyComputed:
 
 {%- import 'components/partials.njk' as el -%}
 {%- call el.heading(title=title,lead=lead) %}{%- endcall %}
+
 {%- set thisMonth = _utils.date.month | int -%}
 {%- set thisYear = _utils.date.year | int -%}
+
+{# now #}
+{%- set eventsNow = [] -%}
+{%- for e in collections.event -%}
+  {%- set thatMonth = e.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
+  {%- set thatYear = e.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
+  {%- if thisMonth === thatMonth and thisYear === thatYear -%}
+    {%- set eventsNow = (eventsNow.push(e), eventsNow) -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{# next #}
+{%- set eventsNext = [] -%}
+{%- for e in collections.event -%}
+  {%- set thatMonth = e.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
+  {%- set thatYear = e.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
+  {%- if (thisMonth < thatMonth and thisYear <= thatYear) or thisYear < thatYear -%}
+    {%- set eventsNext = (eventsNext.push(e), eventsNext) -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{# past #}
+{%- set eventsPast = [] -%}
+{%- for e in collections.event -%}
+  {%- set thatMonth = e.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
+  {%- set thatYear = e.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
+  {%- if (thisMonth > thatMonth and thisYear >= thatYear) or thisYear > thatYear -%}
+    {%- set eventsPast = (eventsPast.push(e), eventsPast) -%}
+  {%- endif -%}
+{%- endfor -%}
+
 {%- macro sessions(item=[]) %}
   <li class="[&:last-child_.timeline-line]:(hidden) flex gap-5">
     <div class="timeline-item flex-(& col) items-center gap-1">
@@ -56,15 +88,7 @@ eleventyComputed:
       <b class="py-1 px-3 uppercase">This month</b>
     </h3>
 
-    {%- set eventsNow = [] -%}
-    {%- for e in collections.event -%}
-      {%- set thatMonth = e.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
-      {%- set thatYear = e.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
-      {%- if thisMonth === thatMonth and thisYear === thatYear -%}
-        {%- set eventsNow = (eventsNow.push(e), eventsNow) -%}
-      {%- endif -%}
-    {%- endfor -%}
-
+    {# now #}
     {%- if eventsNow.length %}
       <ul class="pt-10 space-y-2">
       {%- for item in eventsNow %}
@@ -98,23 +122,14 @@ eleventyComputed:
     </nav>
     <div class="relative z-10">
       <template x-for="(item, index) in categories">
-        <div :id="'tbpanel-'+ index" x-show="tab === index" class="motion-safe:(transition-all ease-in-out)" role="tabpanel" :aria-labelledby="'tab-'+ index"
-          x-transition:enter="absolute top-0 inset-x-0"
-          x-transition:enter-start="opacity-0 scale-110 blur-lg"
-          x-transition:enter-end="opacity-100 scale-100"
-          x-transition:leave-start="opacity-100 scale-100"
-          x-transition:leave-end="opacity-0 scale-110 blur-lg"
+        <div :id="'tbpanel-'+ index" x-show="tab === index" class="motion-safe:(transition ease-in-out duration-300)" role="tabpanel" :aria-labelledby="'tab-'+ index"
+          x-transition:enter-start="opacity-0 scale-y-0 blur-lg"
+          x-transition:enter-end="opacity-100 scale-y-100"
+          x-transition:leave-start="opacity-100 scale-y-100"
+          x-transition:leave-end="opacity-0 scale-y-0 blur-lg"
         >
-          <!-- coming up -->
-          {%- set eventsNext = [] -%}
-          {%- for e in collections.event -%}
-          {%- set thatMonth = e.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
-          {%- set thatYear = e.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
-            {%- if (thisMonth < thatMonth and thisYear <= thatYear) or thisYear < thatYear -%}
-              {%- set eventsNext = (eventsNext.push(e), eventsNext) -%}
-            {%- endif -%}
-          {%- endfor -%}
 
+          {# next #}
           <template x-if="index == 0">
             {%- if eventsNext.length %}
             <ul class="pt-10 space-y-2">
@@ -130,16 +145,7 @@ eleventyComputed:
             {%- endif %}
           </template>
 
-          <!-- archived -->
-          {%- set eventsPast = [] -%}
-          {%- for e in collections.event -%}
-            {%- set thatMonth = e.page.date.toLocaleDateString('en-US', {month: '2-digit', timeZone: 'UTC'}) | int -%}
-            {%- set thatYear = e.page.date.toLocaleDateString('en-US', {year: 'numeric', timeZone: 'UTC'}) | int -%}
-            {%- if (thisMonth > thatMonth and thisYear >= thatYear) or thisYear > thatYear -%}
-              {%- set eventsPast = (eventsPast.push(e), eventsPast) -%}
-            {%- endif -%}
-          {%- endfor -%}
-
+          {# past #}
           <template x-if="index == 1">
             <ul class="pt-10 space-y-2">
               {%- for item in eventsPast | reverse %}
