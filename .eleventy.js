@@ -54,6 +54,13 @@ module.exports = function(eleventyConfig) {
     return markdownLibrary.render(content);
   });
 
+  // date
+  eleventyConfig.addFilter('dateOnly', function (dateVal, locale = 'en-us') {
+    var theDate = new Date(dateVal);
+    const options = {month: '2-digit', day: '2-digit', year: 'numeric', timeZone: 'UTC'};
+    return theDate.toLocaleDateString(locale, options);
+  });
+
   // | randomLimit(6, page.url)
   eleventyConfig.addFilter('randomLimit', (arr, limit, currPage) => {
     const pageArr = arr.filter((page) => page.url !== currPage);

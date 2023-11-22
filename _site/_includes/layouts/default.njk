@@ -169,8 +169,10 @@
               <span class="block">Season 1: <a href="{{ _site.meta.author_url | url }}" class="text-brand-700 motion-safe:(transition) hover:(text-brand-900)">{{ _site.meta.author }}</a></span>
             </p>
             <p class="text-end">
-              Updated:
-              <time datetime="{{ _utils.date.raw }}" class="block">{{ _utils.date.formatted }}</time>
+              Updated:<br />
+              <a href="/changes/">
+                <time datetime="{{ _utils.date.raw }}">{{ _utils.date.formatted }}</time>
+              </a>
             </p>
           </div>
         </div>
