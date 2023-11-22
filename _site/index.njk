@@ -55,9 +55,9 @@ layout: layouts/default.njk
   </div>
 </section>
 
-<section class="py-12 px-6 bg-slate-500/5 lg:(mx-6 rounded-2xl)">
-  <div class="mx-auto w-full max-w-xl space-y-12 lg:(max-w-screen-2xl)">
-    <div class="lg:(mr-auto max-w-6xl)">
+<section class="py-12 px-6 bg-slate-500/5">
+  <div class="mx-auto w-full max-w-md space-y-12 lg:(max-w-6xl)">
+    <div>
       {%- call el.heading(tag='h2',title=home_page.activities.heading) %}{%- endcall %}
       {%- call el.list() %}
         {%- for item in home_page.activities.items %}
@@ -65,7 +65,7 @@ layout: layouts/default.njk
         {%- endfor %}
       {%- endcall %}
     </div>
-    <div class="lg:(ml-auto max-w-6xl)">
+    <div>
       {%- call el.heading(tag='h2',title=home_page.topics.heading) %}{%- endcall %}
       {%- call el.list() %}
         {%- for item in home_page.topics.items %}
@@ -78,11 +78,11 @@ layout: layouts/default.njk
 
 <section class="py-24 px-6 sm:(py-32)">
   <div class="mx-auto max-w-5xl">
-    <h3 class="pt-8 text-(gray-500 base center) tracking-tight font-bold md:(text-2xl)">{{ home_page.sponsors.heading }}</h3>
-    <div class="mx-auto max-w-sm mt-6 grid-(& cols-1) overflow-hidden rounded-2xl md:(max-w-none grid-cols-3)">
+    <h3 class="py-8 text-(gray-500 base center) tracking-tight font-bold md:(text-2xl)">{{ home_page.sponsors.heading }}</h3>
+    <div class="mx-auto max-w-sm mt-6 grid-(& cols-1) gap-10 md:(max-w-none grid-cols-3)">
       {%- for item in home_page.sponsors.items %}      
-        <a href="{{ item.url | url }}" class="group p-4 text-gray-500 sm:(p-10) dark:(bg-opacity-50)">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" role="img" class="mx-auto w-full max-w-[150px] h-auto fill-current motion-safe:(group-hover:(animate-blob)) md:(max-w-[200px])">
+        <a href="{{ item.url | url }}" class="p-4 text-gray-500 ring-(2 gray-500/40) rounded-xl motion-safe:(hover:(animate-blob)) sm:(p-10) dark:(bg-opacity-50)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" role="img" class="mx-auto w-full max-w-[150px] h-auto fill-current md:(max-w-[200px])">
             <title>{{ item.title }}</title>
             {{ item.logo | safe }}
           </svg>
