@@ -23,7 +23,7 @@ eleventyComputed:
   {% for item in merch_page.items %}  
   <li>
     <a href="{{ item.url | url }}" class="group block space-y-2 motion-safe:(transition) [&:hover,&:focus]:(-rotate-2)">
-      <picture><img src="/_assets/img/merch/{{ item.title | slugify }}.jpg" alt="{{ item.title }} with logo" class="aspect-video object-(cover top) rounded-lg motion-safe:(transition) group-hover:(bg-brand-500 ring-(4 brand-500/100))" /></picture>
+      <picture><img src="/_assets/img/merch/{{ item.title | slugify }}.jpg" alt="{{ item.title }} with logo" class="aspect-video object-(cover top) rounded-lg motion-safe:(transition) group-hover:(bg-brand-500 ring-(4 brand-500/100) scale-105)" /></picture>
       <p class="font-bold">{{ item.title }}</p>
     </a>
   </li>
