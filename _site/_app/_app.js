@@ -48,9 +48,14 @@ install({
           '75%': { transform: 'scale(1.1, 1)', },
           '100%': { transform: 'scale(1, 1)', },
         },
+        rock: {
+          '50%': { transform: 'rotate(-3.5deg)', },
+          '100%': { transform: 'rotate(6.5deg)', },
+        },
       },
       animation: {
         blob: 'blob .3s ease-in-out',
+        rock: 'rock .2s ease-in-out',
       },
     },
   },

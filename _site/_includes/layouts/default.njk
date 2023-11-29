@@ -57,9 +57,9 @@
           <ul class="text-sm leading-6 font-semibold hidden lg:(flex gap-x-12)">
             {%- for item in collections.all | eleventyNavigation %}
             <li>
-              <a href="{{ item.url | url }}" class="text-gray-900 block relative motion-safe:(transition) hover:(text-gray-500)"{% if item.url == page.url or item.url in page.url %} aria-current="page"{% endif %}>
+              <a href="{{ item.url | url }}" class="group text-gray-900 block relative motion-safe:(transition) hover:(text-gray-500)"{% if item.url == page.url or item.url in page.url %} aria-current="page"{% endif %}>
                 {{ item.key }}
-                {% if item.url == page.url or item.url in page.url %}<b class="w-full h-[2px] bg-gray-500/30 absolute inset-x-0 -bottom-1 rounded-sm -rotate-2"></b>{% endif %}
+                <b class="w-full h-[2px] bg-gray-500/30 absolute inset-x-0 -bottom-1 rounded-sm {% if item.url == page.url or item.url in page.url %}-rotate-3{% else %}opacity-0{% endif %} motion-safe:(transition) group-hover:(opacity-100 -rotate-3)" aria-hidden="true"></b>
               </a>
             </li>
             {%- endfor %}

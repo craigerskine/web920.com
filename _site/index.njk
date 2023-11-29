@@ -81,7 +81,7 @@ layout: layouts/default.njk
     <h3 class="py-8 text-(gray-500 base center) tracking-tight font-bold md:(text-2xl)">{{ home_page.sponsors.heading }}</h3>
     <div class="mx-auto max-w-sm mt-6 grid-(& cols-1) gap-10 md:(max-w-none grid-cols-3)">
       {%- for item in home_page.sponsors.items %}      
-        <a href="{{ item.url | url }}" class="p-4 text-gray-500 ring-(2 gray-500/40) rounded-xl motion-safe:(hover:(animate-blob)) sm:(p-10) dark:(bg-opacity-50)">
+        <a href="{{ item.url | url }}" class="p-4 text-gray-500 ring-(2 gray-500/40) rounded-xl motion-safe:(transition) hover:(-rotate-3 scale-105) sm:(p-10) dark:(bg-opacity-50)">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" role="img" class="mx-auto w-full max-w-[150px] h-auto fill-current md:(max-w-[200px])">
             <title>{{ item.title }}</title>
             {{ item.logo | safe }}
