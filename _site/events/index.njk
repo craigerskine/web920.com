@@ -59,13 +59,13 @@ eleventyComputed:
         {{ item.page.date.toLocaleDateString('en-US', {month: '2-digit', day: '2-digit', year: 'numeric', timeZone: 'UTC'}) }}
       </p>
       <p class="leading-none">
-        {{ item.data.presenter }}
+        {{ item.data.presenter if 'NEED NAME' !== item.data.presenter else '???' }}
       </p>
-      <h3 class="text-xl leading-none font-bold{% if item.data.session == 'NEED SESSION NAME' %} text-red-500 motion-safe:(animate-pulse){% endif %}">
-        {{ item.data.session }}
+      <h3 class="text-xl leading-none font-bold{{ ' text-red-500 motion-safe:(animate-pulse)' if item.data.session === 'NEED SESSION NAME' }}">
+        {{ item.data.session if 'NEED SESSION NAME' !== item.data.session else '???' }}
       </h3>
       <div class="prose prose-sm pt-3 line-clamp-3 opacity-70 prose-strong:(text-current font-black)">
-        {{ item.content | safe }}
+        {{ item.content | safe if 'NEED NAME' !== item.data.presenter else '???' }}
       </div>
     </div>
   </li>
