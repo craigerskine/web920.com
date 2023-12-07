@@ -39,7 +39,7 @@ install({
         accent: theme('colors.emerald'),
       }),
       fontFamily: ({ theme }) => ({
-        mono: 'JetBrains Mono,'+ theme('fontFamily.mono'),
+        mono: ['JetBrains Mono', ...theme('fontFamily.mono')],
       }),
       keyframes: {
         blob: {
