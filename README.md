@@ -2,7 +2,8 @@
 
 ### ➕ Add your profile to the [920ers page](https://web920.com/920ers/)
 
-- Click the [Watch] button near the top of this page: this may take a day or so to show up on the site
+- Click the [Watch] button near the top of this page.
+    - **NOTE:** it may take a day or so to show up on the site
 
 ***
 
