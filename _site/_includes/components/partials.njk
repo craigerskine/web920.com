@@ -33,7 +33,7 @@
 {% macro list_item(title='',desc='',ico='',color='gray',logo='',url='') %}
 <li class="group flex-(& col) relative">
   {%- if ico %}
-    <i class="mb-6 w-12 h-12 text-({{ color }}-500 2xl) ring-(2 gray-500/40) flex items-center justify-center rounded-xl motion-safe:(transition group-hover:(animate-blob))">
+    <i class="mb-6 w-12 h-12 text-({{ color }}-500 2xl) ring-(2 gray-500/40) flex items-center justify-center rounded-xl motion-safe:(transition group-hover:(animate-blob)) group-hover:(ring-0 bg-{{ color }}-500 text-{{ color }}-50)">
       <iconify-icon icon="{{ ico }}" inline class="iconify"></iconify-icon>
     </i>
   {%- endif %}
