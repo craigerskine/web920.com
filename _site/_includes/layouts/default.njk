@@ -135,6 +135,7 @@
                 <li>
                   <a href="{{ item.url }}" class="text-gray-500 motion-safe:(transition) hover:(text-{{ item.color }}-500 opacity-100)">
                     <iconify-icon icon="{{ item.ico }}" inline="false" class="iconify"></iconify-icon>
+                    <span class="sr-only">{{ item.title }}</span>
                   </a>
                 </li>
                 {%- endfor %}
