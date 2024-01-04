@@ -61,9 +61,9 @@ eleventyComputed:
       <p class="leading-none">
         {{ item.data.presenter if 'NEED NAME' !== item.data.presenter else '???' }}
       </p>
-      <h3 class="text-xl leading-none font-bold{{ ' text-red-500 motion-safe:(animate-pulse)' if item.data.session === 'NEED SESSION NAME' }}">
+      <h2 class="text-xl leading-none font-bold{{ ' text-red-500 motion-safe:(animate-pulse)' if item.data.session === 'NEED SESSION NAME' }}">
         {{ item.data.session if 'NEED SESSION NAME' !== item.data.session else '???' }}
-      </h3>
+      </h2>
       <div class="prose prose-sm pt-3 line-clamp-3 opacity-70 prose-strong:(text-current font-black)">
         {{ item.content | safe if 'NEED NAME' !== item.data.presenter else '???' }}
       </div>
@@ -84,9 +84,9 @@ eleventyComputed:
 
 <div class="pt-10 divide-(y gray-500/20) grid-(& cols-1) gap-10 lg:(divide-y-0 grid-cols-2 gap-32)">
   <div>
-    <h3 class="border-(b slate-900/10) p-3 bg-black/20 flex justify-center gap-x-3 rounded-lg">
+    <h2 class="border-(b slate-900/10) p-3 bg-black/20 flex justify-center gap-x-3 rounded-lg">
       <b class="py-1 px-3 uppercase">This month</b>
-    </h3>
+    </h2>
 
     {# now #}
     {%- if eventsNow.length %}
@@ -96,10 +96,10 @@ eleventyComputed:
       {%- endfor %}
       </ul>
     {%- else %}
-      <h3 class="mt-12 py-12 bg-gray-500/10 text-center grid-(& cols-1) gap-5 ring-(& inset gray-500/20) rounded-lg">
+      <h2 class="mt-12 py-12 bg-gray-500/10 text-center grid-(& cols-1) gap-5 ring-(& inset gray-500/20) rounded-lg">
         <iconify-icon icon="mdi:emoticon-dead" inline class="iconify mx-auto text-8xl opacity-20"></iconify-icon>
         <strong>Nothing this month</strong>
-      </h3>
+      </h2>
     {%- endif %}
 
   </div>
