@@ -26,7 +26,7 @@ eleventyComputed:
         <img src="{{ item.avatar_url }}" alt="{{ item.login }} avatar" class="mx-auto w-16 h-16 rounded-full" />
       </picture>
       <div>
-        <a href="{{ item.html_url | url }}" class="group text-(brand-500 lg) block">
+        <a href="{{ item.html_url | url }}" class="group text-(brand-700 lg) block dark:(text-brand-500)">
           {%- set name -%}
             {%- if item.name -%}
               {{ item.name }}
