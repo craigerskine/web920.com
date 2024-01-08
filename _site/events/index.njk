@@ -105,12 +105,12 @@ eleventyComputed:
   </div>
   <div class="pt-10 lg:(pt-0)" x-data="{ tab: 0, categories: ['Coming up', 'Archived'] }">
     <nav class="flex justify-center relative z-20">
-      <ul class="[&_[aria-expanded=true]]:(border-white/50 bg-white/50 shadow dark:(bg-white/10 border-white/10)) border-(b slate-900/10) p-3 w-full bg-black/20 flex justify-center gap-x-3 rounded-lg" role="tablist">
+      <ul class="[&_[aria-expanded=true]]:(border-white/50 bg-white/50 shadow dark:(bg-white/10 border-white/10)) border-(b slate-900/10) p-3 w-full bg-black/20 grid-(& cols-2) gap-x-3 rounded-lg" role="tablist">
         <template x-for="(item, index) in categories">
-          <li role="presentation">
+          <li class="flex" role="presentation">
             <button
               @click.prevent="tab = index" :id="'tab-'+ index"
-              class="border-(t transparent) px-3 py-1 font-semibold uppercase rounded motion-safe:(transition)"
+              class="border-(t transparent) px-3 py-1 font-semibold uppercase flex-auto rounded motion-safe:(transition)"
               x-text="item"
               role="tab"
               :aria-expanded="tab == index"
