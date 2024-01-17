@@ -132,8 +132,9 @@
               <ul class="py-5 text-2xl flex justify-center gap-8 md:(justify-start)">
                 {%- for item in _site.social %}
                 <li>
-                  <a href="{{ item.url }}" class="text-gray-500 motion-safe:(transition) hover:(text-{{ item.color }}-500 opacity-100)">
-                    <iconify-icon icon="{{ item.ico }}" inline="false" class="iconify"></iconify-icon>
+                  <a href="{{ item.url }}" class="group text-gray-500 relative motion-safe:(transition) hover:(text-{{ item.color }}-500 opacity-100)">
+                    <span class="w-12 h-12 bg-{{ item.color }}-500/25 absolute top-1/2 left-1/2 opacity-0 rounded-full -translate-x-1/2 -translate-y-1/2 scale-50 motion-safe:(transition) group-hover:(opacity-100 scale-100)" aria-hidden="true"></span>
+                    <iconify-icon icon="{{ item.ico }}" inline="false" class="iconify relative"></iconify-icon>
                     <span class="sr-only">{{ item.title }}</span>
                   </a>
                 </li>
