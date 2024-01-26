@@ -75,20 +75,20 @@ eleventyComputed:
   <h2 class="text-(gray-500 lg) tracking-tight font-bold uppercase">{{ caller() }}</h2>
 {%- endmacro %}
 
-{# 
-<h3 class="mx-auto border-(t white/20) py-12 max-w-2xl bg-gradient-to-t from-transparent via-transparent to-white text-center grid-(& cols-1) gap-5 rounded-lg shadow-2xl motion-safe:(animate-pulse) dark:(to-gray-500/10)">
-  <iconify-icon icon="mdi:emoticon-sick" inline class="iconify mx-auto text-8xl opacity-20"></iconify-icon>
-  <strong>We're working on it...</strong>
-</h3>
-#}
 
+<h2 class="mx-auto border-(1 gray-500/25) py-12 max-w-2xl bg-gray-500/5 flex-(& col) items-center gap-5 rounded-lg shadow-2xl dark:(border-(0 t white/10))">
+  <iconify-icon icon="mdi:emoticon-sick" inline class="iconify mx-auto text-8xl opacity-20"></iconify-icon>
+  <strong>Maybe we're working on it...</strong>
+</h2>
+
+{#
 <div class="pt-10 divide-(y gray-500/20) grid-(& cols-1) gap-10 lg:(divide-y-0 grid-cols-2 gap-32)">
   <div>
     <h2 class="border-(b slate-900/10) p-3 bg-black/20 flex justify-center gap-x-3 rounded-lg">
       <b class="py-1 px-3 uppercase">This month</b>
     </h2>
 
-    {# now #}
+    <!-- now -->
     {%- if eventsNow.length %}
       <ul class="pt-10 space-y-2">
       {%- for item in eventsNow %}
@@ -129,7 +129,7 @@ eleventyComputed:
           x-transition:leave-end="opacity-0 scale-y-0 blur-lg"
         >
 
-          {# next #}
+          <!-- next -->
           <template x-if="index == 0">
             {%- if eventsNext.length %}
             <ul class="pt-10 space-y-2">
@@ -145,7 +145,7 @@ eleventyComputed:
             {%- endif %}
           </template>
 
-          {# past #}
+          <!-- past -->
           <template x-if="index == 1">
             <ul class="pt-10 space-y-2">
               {%- for item in eventsPast | reverse %}
@@ -159,3 +159,4 @@ eleventyComputed:
     </div>
   </div>
 </div>
+#}
