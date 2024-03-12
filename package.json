@@ -28,7 +28,7 @@
     "alpinejs": "^3.13.5",
     "eleventy-plugin-recent-changes": "^1.0.1",
     "esbuild": "^0.18.20",
-    "iconify-icon": "^1.0.8",
+    "iconify-icon": "^2.0.0",
     "instant.page": "^5.2.0",
     "js-yaml": "^4.1.0",
     "markdown-it-attrs": "^4.1.6"
