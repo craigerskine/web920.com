@@ -11,22 +11,22 @@ social:
     url: https://twitter.com/web920
     ico: ri:twitter-x-fill
     color: neutral
-  - title: Youtube
-    url: https://youtube.com/c/web920
-    ico: ri:youtube-fill
-    color: red
-  - title: Instagram
-    url: https://instagram.com/web920
-    ico: ri:instagram-fill
-    color: orange
+  # - title: Youtube
+  #   url: https://youtube.com/c/web920
+  #   ico: ri:youtube-fill
+  #   color: red
+  # - title: Instagram
+  #   url: https://instagram.com/web920
+  #   ico: ri:instagram-fill
+  #   color: orange
   - title: Facebook
     url: https://facebook.com/web920/
     ico: ri:facebook-fill
     color: indigo
-  # - title: GitHub
-  #   url: https://github.com/craigerskine/web920.com/
-  #   ico: ri:github-fill
-  #   color: neutral
+  - title: GitHub
+    url: https://github.com/craigerskine/web920.com/
+    ico: ri:github-fill
+    color: neutral
 
 footer:
   - title: Sitemap
