@@ -74,7 +74,8 @@ injectGlobal`
 
 // alpine
 import Alpine from 'alpinejs';
-import focus from '@alpinejs/focus'
+import anchor from '@alpinejs/anchor';
+import focus from '@alpinejs/focus';
 window.Alpine = Alpine;
-Alpine.plugin(focus)
+Alpine.plugin([anchor, focus])
 Alpine.start();

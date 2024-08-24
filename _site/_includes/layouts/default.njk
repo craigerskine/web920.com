@@ -35,10 +35,9 @@
 
   </head>
 
-  <body @keyup.escape="menu = false" class="bg-gray-50 text-gray-700 font-mono !block" style="display: none;" data-instant-intensity="mousedown">
+  <body class="bg-gray-50 text-gray-700 font-mono !block" style="display: none;" data-instant-intensity="mousedown">
 
     <div class="min-h-screen flex-(& col) relative">
-
 
       <header class="w-full flex-none relative">
         <nav class="mx-auto py-6 px-4 max-w-7xl flex items-center justify-between lg:(px-8)" aria-label="Global">
@@ -48,10 +47,45 @@
             </a>
           </div>
           <div class="lg:(hidden)">
-            <button type="button" @click="menu = !menu" class="-m-2.5 flex items-center justify-center rounded-md p-2.5 text-(2xl gray-700)">
+            <button
+              x-ref="menu"
+              @click.prevent="menu = !menu"
+              :aria-expanded="menu"
+              :aria-controls="$id('dropdown')"
+              class="-m-2.5 flex items-center justify-center rounded-md p-2.5 text-(2xl gray-700)"
+            >
               <span class="sr-only">Open main menu</span>
               <iconify-icon icon="mdi:menu" inline class="iconify"></iconify-icon>
             </button>
+            <div
+              x-ref="panel"
+              x-show="menu"
+              x-trap="menu"
+              x-anchor.bottom-end="$refs.menu"
+              x-transition
+              @click.outside="menu = false"
+              @keydown.escape.window="menu = false"
+              @keydown.down.prevent.stop="$focus.next()"
+              @keydown.up.prevent.stop="$focus.prev()"
+              :id="$id('dropdown')"
+              class="w-full max-w-[14rem] relative z-50"
+              style="display: none;"
+            >
+              <div tabindex="0" class="p-2 bg-gray-200 rounded-lg shadow-lg focus:(outline-none) focus-visible:(outine-none)">
+                <menu class="space-y-1">
+                  {%- for item in collections.all | eleventyNavigation %}
+                  <li>
+                    <a href="{{ item.url | url }}" class="px-4 py-2 block rounded-lg motion-safe:(transition) hover:(bg-gray-300)"{% if item.url == page.url or item.url in page.url %} aria-current="page"{% endif %}>
+                      {{ item.key }}
+                    </a>
+                  </li>
+                  {%- endfor %}
+                </menu>
+                <div class="mt-4 px-4">
+                  {{ el.mode() }}
+                </div>
+              </div>
+            </div>
           </div>
           <ul class="text-sm leading-6 font-semibold hidden lg:(flex gap-x-12)">
             {%- for item in collections.all | eleventyNavigation %}
@@ -67,47 +101,6 @@
             {{ el.mode() }}
           </div>
         </nav>
-        <!-- Mobile menu, show/hide based on menu open state. -->
-        <div class="lg:(hidden)" x-show="menu" role="dialog" aria-modal="true">
-          <!-- Background backdrop, show/hide based on slide-over state. -->
-          <div x-show="menu" @click="menu = false" class="bg-black/80 fixed inset-0 z-50 motion-safe:(transition ease-in-out)"
-            x-transition:enter-start="opacity-0 scale-110 blur-lg"
-            x-transition:enter-end="opacity-100 scale-100"
-            x-transition:leave-start="opacity-100 scale-100"
-            x-transition:leave-end="opacity-0 scale-110 blur-lg"
-          ></div>
-          <div x-show="menu" x-trap="menu" class="p-6 w-full max-w-sm bg-gray-50 overflow-y-auto fixed inset-y-0 right-0 z-50 motion-safe:(transition duration-300 ease-in-out) sm:(ring-(1 gray-900/10)"
-            x-transition:enter-start="opacity-0 translate-x-10 blur-lg"
-            x-transition:enter-end="opacity-100 translate-x-0"
-            x-transition:leave-start="opacity-100 translate-x-0"
-            x-transition:leave-end="opacity-0 translate-x-10 blur-lg"
-          >
-            <div class="flex items-center justify-end">
-              <button type="button" @click="menu = false" class="-m-2.5 p-2.5 text-(2xl gray-700)">
-                <span class="sr-only">Close menu</span>
-                <iconify-icon icon="mdi:close" inline class="iconify"></iconify-icon>
-              </button>
-            </div>
-            <div class="">
-              <div class="divide-y divide-gray-500/10">
-                <ul class="space-y-2 py-6">
-                  {%- for item in collections.all | eleventyNavigation %}
-                  <li>
-                    <a href="{{ item.url | url }}" class="-mx-3 py-2 px-3 text-(gray-900 base) leading-7 font-semibold block rounded-lg motion-safe:(transition) hover:(bg-gray-100/100)
-                    {% if item.url == page.url or item.url in page.url %}bg-gray-100/50{% endif %}
-                    "{% if item.url == page.url or item.url in page.url %} aria-current="page"{% endif %}>
-                      {{ item.key }}
-                    </a>
-                  </li>
-                  {%- endfor %}
-                </ul>
-                <div class="py-6">
-                  {{ el.mode() }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </header>
       <main class="w-full flex-1">
         {{ content | safe }}

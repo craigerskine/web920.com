@@ -1,7 +1,7 @@
 {% macro mode() %}
-<button class="color-mode text-(gray-500 xl) inline-flex motion-safe:(transition) hover:(text-gray-700)" aria-label="Toggle color mode">
-  <span class="block dark:(hidden)"><iconify-icon icon="mdi:weather-sunny" inline="false" class="iconify"></iconify-icon> <span class="sr-only">Switch to dark mode</span></span>
-  <span class="hidden dark:(block)"><iconify-icon icon="mdi:weather-night" inline="false" class="iconify"></iconify-icon> <span class="sr-only">Switch to light mode</span></span>
+<button class="color-mode w-6 h-6 text-gray-500 flex items-center justify-center motion-safe:(transition) hover:(text-gray-700)" aria-label="Toggle color mode">
+  <span class="block dark:(hidden)"><iconify-icon icon="mdi:weather-sunny" width="24px" height="24px" class="block"></iconify-icon> <span class="sr-only">Switch to dark mode</span></span>
+  <span class="hidden dark:(block)"><iconify-icon icon="mdi:weather-night" width="24px" height="24px" class="block"></iconify-icon> <span class="sr-only">Switch to light mode</span></span>
 </button>
 {% endmacro %}
 
