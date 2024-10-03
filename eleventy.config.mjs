@@ -1,12 +1,12 @@
-const { EleventyRenderPlugin } = require('@11ty/eleventy');
-const eleventyNavigationPlugin = require('@11ty/eleventy-navigation');
-const esbuild = require('esbuild');
-const markdownIt = require('markdown-it');
-const markdownItAttrs = require('markdown-it-attrs');
-const recentChanges = require('eleventy-plugin-recent-changes');
-const yaml = require('js-yaml');
+import { EleventyRenderPlugin } from '@11ty/eleventy';
+import eleventyNavigationPlugin from '@11ty/eleventy-navigation';
+import esbuild from 'esbuild';
+import markdownIt from 'markdown-it';
+import markdownItAttrs from 'markdown-it-attrs';
+import recentChanges from 'eleventy-plugin-recent-changes';
+import yaml from 'js-yaml';
 
-module.exports = function(eleventyConfig) {
+export default function (eleventyConfig) {
 
   eleventyConfig.setServerOptions({
     domdiff: false,
