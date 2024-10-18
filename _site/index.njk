@@ -27,8 +27,8 @@ layout: layouts/default.njk
             {{ home_page.hero.lead }}
           </p>
           <div class="mt-12 flex items-center gap-x-6">
-            <a href="{{ '/events/' | url }}" class="btn btn-brand">Coming events</a>
-            <a href="{{ '/920ers/' | url }}" class="btn group text-(gray-900 sm) font-semibold leading-6">920ers <span aria-hidden="true" class="inline-block motion-safe:(transition) group-hover:(translate-x-1)">→</span></a>
+            {# <a href="{{ '/events/' | url }}" class="btn btn-brand">Coming events</a> #}
+            <a href="{{ '/920ers/' | url }}" class="btn btn-brand group text-(gray-900 sm) font-semibold leading-6">920ers <span aria-hidden="true" class="inline-block motion-safe:(transition) group-hover:(translate-x-1)">→</span></a>
           </div>
         </div>
         {%- macro pic(img='01') %}
@@ -80,7 +80,7 @@ layout: layouts/default.njk
   <div class="mx-auto max-w-5xl">
     <h3 class="py-8 text-(gray-500 base center) tracking-tight font-bold md:(text-2xl)">{{ home_page.sponsors.heading }}</h3>
     <div class="mx-auto max-w-sm mt-6 grid-(& cols-1) gap-10 md:(max-w-none grid-cols-3)">
-      {%- for item in home_page.sponsors.items %}      
+      {%- for item in home_page.sponsors.items %}
         <a href="{{ item.url | url }}" class="group p-4 text-gray-500 relative ring-(2 gray-500/40) overflow-hidden rounded-xl motion-safe:(transition) hover:(-rotate-3 scale-105) sm:(p-10) dark:(bg-opacity-50)">
           <b class="h-0 bg-gray-500/10 absolute inset-x-0 top-0 rounded-lg motion-safe:(transition-all) group-hover:(h-full)" aria-hidden="true"></b>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60" role="img" class="mx-auto w-full max-w-[150px] h-auto fill-current relative md:(max-w-[200px])">

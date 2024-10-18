@@ -35,9 +35,9 @@ footer:
       - title: 11ty
         sub: SSG
         url: https://11ty.dev/
-      - title: Twind
-        sub: Styles
-        url: https://twind.style/
+#      - title: Twind
+#        sub: Styles
+#        url: https://twind.style/
       - title: Code
         sub: Source
         url: https://github.com/craigerskine/web920.com/tree/season-1

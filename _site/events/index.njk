@@ -1,14 +1,22 @@
 ---
 layout: layouts/page.njk
 title: Events
-eleventyNavigation:
-  title: Coming
-  order: 1
+# eleventyNavigation:
+#   title: Coming
+#   order: 1
 eleventyComputed:
   lead: "{{ events_page.lead }}"
-  eleventyNavigation:
-    key: "{{ title }}"
+#  eleventyNavigation:
+#    key: "{{ title }}"
 ---
+
+
+
+
+{%- setblock 'head' %}<meta http-equiv="refresh" content="0; url=/" />{%- endsetblock %}
+
+
+
 
 {%- import 'components/partials.njk' as el -%}
 {%- call el.heading(title=title,lead=lead) %}{%- endcall %}
