@@ -1,6 +1,6 @@
 # Web920 - Season 1 → <sub>(by [Craig Erskine](https://craigerskine.com))</sub>
 
-### ➕ Add your profile to the [920ers page](https://web920.com/920ers/)
+### ➕ Join/Add your profile to the [920ers page](https://web920.com/920ers/)
 
 - Click the [Watch] button near the top of this page.
     - **NOTE:** it may take a day or so to show up on the site
