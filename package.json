@@ -16,9 +16,9 @@
   "author": "craigerskine",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0",
-    "@11ty/eleventy-fetch": "^4.0.1",
-    "@11ty/eleventy-navigation": "^0.3.5",
+    "@11ty/eleventy": "^3.1.1",
+    "@11ty/eleventy-fetch": "^5.1.0",
+    "@11ty/eleventy-navigation": "^1.0.4",
     "@alpinejs/anchor": "^3.14.9",
     "@alpinejs/focus": "^3.14.9",
     "@twind/core": "^1.1.3",
@@ -28,8 +28,8 @@
     "@twind/preset-typography": "^1.0.7",
     "alpinejs": "^3.14.9",
     "eleventy-plugin-recent-changes": "^1.0.1",
-    "esbuild": "^0.25.2",
-    "iconify-icon": "^2.3.0",
+    "esbuild": "^0.25.5",
+    "iconify-icon": "^3.0.0",
     "instant.page": "^5.2.0",
     "js-yaml": "^4.1.0",
     "markdown-it-attrs": "^4.3.1"
