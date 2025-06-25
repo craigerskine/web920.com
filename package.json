@@ -16,7 +16,7 @@
   "author": "craigerskine",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.1",
+    "@11ty/eleventy": "^3.1.2",
     "@11ty/eleventy-fetch": "^5.1.0",
     "@11ty/eleventy-navigation": "^1.0.4",
     "@alpinejs/anchor": "^3.14.9",
