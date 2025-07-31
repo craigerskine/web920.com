@@ -33,11 +33,11 @@
     <div id="app" class="min-h-screen flex-(& col)">
       <header class="w-full flex-none">
         <button class="color-mode text-[24px] flex items-center fixed top-2 right-2 motion-safe:(transition) hover:(text-brand-500)" aria-label="Toggle color mode">
-          <span class="block dark:(hidden)"><iconify-icon icon="mdi:brightness-5" inline="false" class="iconify"></iconify-icon> <span class="sr-only">Switch to dark mode</span></span>
-          <span class="hidden dark:(block)"><iconify-icon icon="mdi:brightness-4" inline="false" class="iconify"></iconify-icon> <span class="sr-only">Switch to light mode</span></span>
+          <span class="block dark:(hidden)"><iconify-icon icon="mdi:brightness-5" inline="false" class="iconify" noobserver></iconify-icon> <span class="sr-only">Switch to dark mode</span></span>
+          <span class="hidden dark:(block)"><iconify-icon icon="mdi:brightness-4" inline="false" class="iconify" noobserver></iconify-icon> <span class="sr-only">Switch to light mode</span></span>
         </button>
       </header>
-      <main class="w-full flex-(& col 1)"> 
+      <main class="w-full flex-(& col 1)">
         <div class="w-2/5 text-black flex items-center fixed right-10 inset-y-0 opacity-25 dark:(text-gray-300)" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 828 1021" role="img" class="fill-current">
             <linearGradient id="fade-tb" gradientTransform="rotate(90)">

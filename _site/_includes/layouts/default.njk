@@ -56,7 +56,7 @@
               class="-m-2.5 flex items-center justify-center rounded-md p-2.5 text-(2xl gray-700)"
             >
               <span class="sr-only">Open main menu</span>
-              <iconify-icon icon="mdi:menu" inline class="iconify"></iconify-icon>
+              <iconify-icon icon="mdi:menu" inline class="iconify" noobserver></iconify-icon>
             </button>
             <div
               x-ref="panel"
@@ -128,7 +128,7 @@
                 <li>
                   <a href="{{ item.url }}" class="group text-gray-500 relative motion-safe:(transition) hover:(text-{{ item.color }}-500 opacity-100)">
                     <span class="w-12 h-12 bg-{{ item.color }}-500/25 absolute top-1/2 left-1/2 opacity-0 rounded-full -translate-x-1/2 -translate-y-1/2 scale-50 motion-safe:(transition) group-hover:(opacity-100 scale-100)" aria-hidden="true"></span>
-                    <iconify-icon icon="{{ item.ico }}" inline="false" class="iconify relative"></iconify-icon>
+                    <iconify-icon icon="{{ item.ico }}" inline="false" class="iconify relative" noobserver></iconify-icon>
                     <span class="sr-only">{{ item.title }}</span>
                   </a>
                 </li>

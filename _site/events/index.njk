@@ -58,7 +58,7 @@ eleventyComputed:
   <li class="[&:last-child_.timeline-line]:(hidden) flex gap-5">
     <div class="timeline-item flex-(& col) items-center gap-1">
       <span class="timeline-ico">
-        <iconify-icon icon="mdi:calendar" inline class="iconify text-(3xl brand-500/50)"></iconify-icon>
+        <iconify-icon icon="mdi:calendar" inline class="iconify text-(3xl brand-500/50)" noobserver></iconify-icon>
       </span>
       <b class="timeline-line w-1 bg-current flex-auto opacity-10"></b>
     </div>
@@ -85,7 +85,7 @@ eleventyComputed:
 
 
 <h2 class="mx-auto border-(& gray-500/25) py-12 max-w-2xl bg-gray-500/5 flex-(& col) items-center gap-5 rounded-lg shadow-xl dark:(border-(& gray-500/10 t t-white/10))">
-  <iconify-icon icon="mdi:emoticon-sick" inline class="iconify mx-auto text-8xl opacity-20"></iconify-icon>
+  <iconify-icon icon="mdi:emoticon-sick" inline class="iconify mx-auto text-8xl opacity-20" noobserver></iconify-icon>
   <strong>{{ events_page.waiting }}</strong>
 </h2>
 
@@ -105,7 +105,7 @@ eleventyComputed:
       </ul>
     {%- else %}
       <h2 class="mt-12 py-12 bg-gray-500/10 text-center grid-(& cols-1) gap-5 ring-(& inset gray-500/20) rounded-lg">
-        <iconify-icon icon="mdi:emoticon-dead" inline class="iconify mx-auto text-8xl opacity-20"></iconify-icon>
+        <iconify-icon icon="mdi:emoticon-dead" inline class="iconify mx-auto text-8xl opacity-20" noobserver></iconify-icon>
         <strong>Nothing this month</strong>
       </h2>
     {%- endif %}
@@ -147,7 +147,7 @@ eleventyComputed:
             </ul>
             {%- else %}
             <h3 class="mt-12 py-12 bg-gray-500/10 text-center grid-(& cols-1) gap-5 ring-(& inset gray-500/20) rounded-lg">
-              <iconify-icon icon="mdi:calendar-alert" inline class="iconify mx-auto text-8xl opacity-20"></iconify-icon>
+              <iconify-icon icon="mdi:calendar-alert" inline class="iconify mx-auto text-8xl opacity-20" noobserver></iconify-icon>
               <strong>Nothing scheduled</strong>
             </h3>
             {%- endif %}

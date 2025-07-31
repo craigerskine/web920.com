@@ -1,7 +1,7 @@
 {% macro mode() %}
 <button class="color-mode w-6 h-6 text-gray-500 flex items-center justify-center motion-safe:(transition) hover:(text-gray-700)" aria-label="Toggle color mode">
-  <span class="block dark:(hidden)"><iconify-icon icon="mdi:weather-sunny" width="24px" height="24px" class="block"></iconify-icon> <span class="sr-only">Switch to dark mode</span></span>
-  <span class="hidden dark:(block)"><iconify-icon icon="mdi:weather-night" width="24px" height="24px" class="block"></iconify-icon> <span class="sr-only">Switch to light mode</span></span>
+  <span class="block dark:(hidden)"><iconify-icon icon="mdi:weather-sunny" width="24px" height="24px" class="block" noobserver></iconify-icon> <span class="sr-only">Switch to dark mode</span></span>
+  <span class="hidden dark:(block)"><iconify-icon icon="mdi:weather-night" width="24px" height="24px" class="block" noobserver></iconify-icon> <span class="sr-only">Switch to light mode</span></span>
 </button>
 {% endmacro %}
 
@@ -11,7 +11,7 @@
     <{{ tag }} class="w-full text-{%if tag == 'h1' %}2xl{% else %}xl{% endif %} text-wrap-balance leading-tight font-black relative lg:(text-{%if tag == 'h1' %}5xl{% else %}3xl{% endif %} tracking-tight)">
       {{ title }}
     </{{ tag }}>
-    {%- if lead %}  
+    {%- if lead %}
     <p class="text-gray-500 text-wrap-balance relative">{{ lead | safe }}</p>
     {%- endif %}
     <i class="mt-2 h-1 flex gap-3 opacity-50 -rotate-1" aria-hidden="true">
@@ -34,7 +34,7 @@
 <li class="group flex-(& col) relative">
   {%- if ico %}
     <i class="mb-6 w-12 h-12 text-({{ color }}-500 2xl) ring-(2 gray-500/40) flex items-center justify-center rounded-xl motion-safe:(transition group-hover:(animate-blob)) group-hover:(ring-0 bg-{{ color }}-500 text-{{ color }}-50)">
-      <iconify-icon icon="{{ ico }}" inline class="iconify"></iconify-icon>
+      <iconify-icon icon="{{ ico }}" inline class="iconify" noobserver></iconify-icon>
     </i>
   {%- endif %}
   {%- if logo %}
@@ -47,7 +47,7 @@
   {%- else %}
   <b class="text-lg">{{ title }}</b>
   {%- endif %}
-  {% if desc %}  
+  {% if desc %}
     <p class="mt-5 text-gray-500">{{ desc }}</p>
   {% endif %}
 </li>
