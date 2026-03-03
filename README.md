@@ -12,8 +12,8 @@
 ### 🔨 Contribute to the site
 
 1. Fork this repo and make data changes in the `season-1` branch.
-2. Base content data is located in `_site/_data`.
-3. Event schedule is located in `_site/events/_data`. Please follow the same file name pattern and md frontmatter architecture.
+2. Base content data is located in `_src/_data`.
+3. Event schedule is located in `_src/events/_data`. Please follow the same file name pattern and md frontmatter architecture.
     - Creating a new session entry: File name should be `YYYY-MM-DD.md` where the date is the date of the session.
 4. Create a Pull Request with your changes. Someone will review it and make sure it does not break anything before adding it into the repo.
 
