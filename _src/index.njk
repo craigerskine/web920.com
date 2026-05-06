@@ -33,7 +33,7 @@ layout: layouts/default.njk
         </div>
         {%- macro pic(img='01') %}
         <div class="relative -rotate-3 motion-safe:(transition hover:(animate-blob)) hover:(rotate-0)">
-          <img src="/_assets/img/hero/{{ img }}.jpg" alt="photo {{ img }}" class="w-full aspect-[2/3] bg-gray-900/5 object-cover rounded-xl shadow-lg">
+          <img src="{{ '/' | url }}_assets/img/hero/{{ img }}.jpg" alt="photo {{ img }}" class="w-full aspect-[2/3] bg-gray-900/5 object-cover rounded-xl shadow-lg">
           <div class="pointer-events-none absolute inset-0 rounded-xl ring-(1 inset gray-900/10)"></div>
         </div>
         {%- endmacro %}

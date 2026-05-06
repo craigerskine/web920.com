@@ -23,7 +23,7 @@ eleventyComputed:
   {%- for item in 920ers_github %}
     <li class="p-4 text-center space-y-3 relative">
       <picture>
-        <img src="{{ item.avatar_url }}" alt="{{ item.login }} avatar" class="mx-auto w-16 h-16 rounded-full" />
+        <img src="{{ item.avatar_url | url }}" alt="{{ item.login }} avatar" class="mx-auto w-16 h-16 rounded-full" />
       </picture>
       <div>
         <a href="{{ item.html_url | url }}" class="group inline-flex text-(brand-700 lg) dark:(text-brand-500)">

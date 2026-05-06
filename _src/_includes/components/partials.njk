@@ -39,7 +39,7 @@
   {%- endif %}
   {%- if logo %}
     <div class="mb-6 w-32">
-      <a href="{{ url }}">
+      <a href="{{ url | url }}">
         {{ logo | safe }}
         <span class="absolute inset-0"></span>
       </a>
